@@ -18,14 +18,14 @@ class Stack:
 
     def print():
         """
-        Prints the stack to the console as an array with elements ordered from from
-        bottom to top.
+        Prints the stack to the console as a list with elements ordered from from bottom
+        to top.
         """
         print(self.collection)
 
     def isEmpty():
         """Returns whether or not the stack is currently empty."""
-        return len(self.collection == 0)
+        return len(self.collection) == 0
 
     def clear():
         """Clears the contents of the stack."""

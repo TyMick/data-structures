@@ -17,12 +17,9 @@ class Stack {
     return this.collection.pop();
   }
 
-  /**
-   * Prints the stack to the console as an array with elements ordered from
-   * from bottom to top.
-   */
-  print(): void {
-    console.log(this.collection);
+  /** Returns the number of elements in the stack. */
+  size(): number {
+    return this.collection.length;
   }
 
   /** Returns whether or not the stack is currently empty. */
@@ -33,5 +30,13 @@ class Stack {
   /** Clears the contents of the stack. */
   clear(): void {
     this.collection = [];
+  }
+
+  /**
+   * Prints the stack to the console as an array with elements ordered from
+   * from bottom to top.
+   */
+  print(): void {
+    console.log(this.collection);
   }
 }

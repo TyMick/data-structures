@@ -9,7 +9,9 @@ class CircularQueue {
   size: number;
 
   constructor(size: number) {
-    if (!Number.isInteger(size) || size <= 0) {
+    const isInteger = (number: number) =>
+      number === parseInt(number.toString(), 10);
+    if (!isInteger(size) || size <= 0) {
       throw new RangeError("Queue size must be a postive integer.");
     }
 

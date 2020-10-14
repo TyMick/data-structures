@@ -51,6 +51,11 @@ class CircularQueue:
             self.read_pos = (self.read_pos + 1) % self.size
             return item
 
+    def clear(self):
+        """Clears the contents of the queue."""
+        self.queue = [None for i in range(self.size)]
+        self.read_pos = self.write_pos = 0
+
     def print(self):
         """
         Prints the queue to the console as an array, starting with the element that will

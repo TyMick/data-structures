@@ -53,6 +53,15 @@ class CircularQueue {
     }
   }
 
+  /** Clears the contents of the queue. */
+  clear(): void {
+    for (let i = 0; i < this.size; i++) {
+      this.queue[i] = null;
+    }
+    this.readPos = 0;
+    this.writePos = 0;
+  }
+
   /**
    * Prints the queue to the console as an array, starting with the element that
    * will be read next.

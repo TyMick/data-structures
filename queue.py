@@ -20,7 +20,7 @@ class Queue:
         """Return the number of elements in the queue."""
         return len(self.collection)
 
-    def isEmpty(self):
+    def is_empty(self):
         """Return whether or not the queue is currently empty."""
         return len(self.collection) == 0
 

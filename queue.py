@@ -1,7 +1,7 @@
 class Queue:
     """Implements a queue data structure with first-in-first-out functionality."""
     
-    __init__(self):
+    def __init__(self):
         self.collection = []
 
     def enqueue(element):

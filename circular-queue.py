@@ -1,10 +1,14 @@
 class CircularQueue:
     """
-    Implements a circlular queue, a first-in-first-out data structure with a fixed
-    buffer size.
+    A circlular queue: a first-in-first-out data structure with a fixed buffer size.
     """
 
     def __init__(self, size):
+        if type(size) is not int:
+            raise TypeError("Queue size must be a postive integer.")
+        if size <= 0:
+            raise ValueError("Queue size must be a postive integer.")
+
         self.queue = []
         self.read_pos = 0
         self.write_pos = 0
@@ -13,16 +17,10 @@ class CircularQueue:
 
     def enqueue(self, element):
         """
-        Adds an element to the buffer if the buffer is not already full.
+        Add an element to the buffer if the buffer is not already full.
 
-        Parameters
-        ----------
-        element :
-            The element you wish to add.
-
-        Returns
-        -------
-        The element itself if it was added, or `None` if the buffer was full.
+        :param element: The element you wish to add.
+        :returns: The element itself if it was added, or `None` if the buffer was full.
         """
 
         if self.queue[self.write_pos] is None:
@@ -35,11 +33,9 @@ class CircularQueue:
 
     def dequeue(self):
         """
-        Removes an element from the buffer if the buffer is not already empty.
+        Remove an element from the buffer if the buffer is not already empty.
 
-        Returns
-        -------
-        The element removed (or `None` if the buffer was empty).
+        :returns: The element removed (or `None` if the buffer was empty).
         """
 
         if self.queue[self.read_pos] is None:
@@ -52,13 +48,13 @@ class CircularQueue:
             return item
 
     def clear(self):
-        """Clears the contents of the queue."""
+        """Clear the contents of the queue."""
         self.queue = [None for i in range(self.size)]
         self.read_pos = self.write_pos = 0
 
     def print(self):
         """
-        Prints the queue to the console as an array, starting with the element that will
-        be read next.
+        Print the queue to the console as a list, starting with the element that will be
+        read next.
         """
         return self.queue[self.read_pos :] + self.queue[: self.read_pos]

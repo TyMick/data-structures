@@ -1,6 +1,6 @@
 /**
- * Implements a circlular queue, a first-in-first-out data structure with a
- * fixed buffer size.
+ * A circlular queue: a first-in-first-out data structure with a fixed buffer
+ * size.
  */
 class CircularQueue {
   queue: any[] = [];
@@ -14,14 +14,13 @@ class CircularQueue {
     }
 
     this.size = size;
-
     for (let i = 0; i < size; i++) {
       this.queue.push(null);
     }
   }
 
   /**
-   * Adds an element to the buffer if the buffer is not already full.
+   * Add an element to the buffer if the buffer is not already full.
    * @param element - The element you wish to add.
    * @returns The element itself if it was added, or `null` if the buffer was
    * full.
@@ -38,7 +37,7 @@ class CircularQueue {
   }
 
   /**
-   * Removes an element from the buffer if the buffer is not already empty.
+   * Remove an element from the buffer if the buffer is not already empty.
    * @returns The element removed (or `null` if the buffer was empty).
    */
   dequeue(): any {
@@ -53,7 +52,7 @@ class CircularQueue {
     }
   }
 
-  /** Clears the contents of the queue. */
+  /** Clear the contents of the queue. */
   clear(): void {
     for (let i = 0; i < this.size; i++) {
       this.queue[i] = null;
@@ -63,7 +62,7 @@ class CircularQueue {
   }
 
   /**
-   * Prints the queue to the console as an array, starting with the element that
+   * Print the queue to the console as an array, starting with the element that
    * will be read next.
    */
   print(): any[] {

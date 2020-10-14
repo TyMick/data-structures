@@ -1,6 +1,6 @@
-class Node {
+class LLNode {
   element: any;
-  next: Node = null;
+  next: LLNode = null;
 
   constructor(element: any) {
     this.element = element;
@@ -13,18 +13,18 @@ class Node {
  */
 class LinkedList {
   length: number = 0;
-  head: Node = null;
+  head: LLNode = null;
 
   /** Add a new element to the end of the list. */
   add(element: any): void {
     if (this.head) {
-      let currentNode: Node = this.head;
+      let currentNode: LLNode = this.head;
       while (currentNode.next) {
         currentNode = currentNode.next;
       }
-      currentNode.next = new Node(element);
+      currentNode.next = new LLNode(element);
     } else {
-      this.head = new Node(element);
+      this.head = new LLNode(element);
     }
     this.length++;
   }
@@ -39,8 +39,8 @@ class LinkedList {
         this.length--;
       } else {
         // Search for element
-        let currentNode: Node = this.head.next;
-        let previousNode: Node = this.head;
+        let currentNode: LLNode = this.head.next;
+        let previousNode: LLNode = this.head;
         while (currentNode) {
           if (currentNode.element === element) {
             // Link adjacent nodes to each other
@@ -76,7 +76,7 @@ class LinkedList {
    */
   indexOf(element: any): number {
     let index: number = 0;
-    let currentNode: Node = this.head;
+    let currentNode: LLNode = this.head;
     while (currentNode) {
       if (currentNode.element === element) {
         return index;
@@ -142,7 +142,7 @@ class LinkedList {
     if (index < 0 || index > this.length) {
       return false;
     } else if (index === 0) {
-      let newNode = new Node(element);
+      let newNode = new LLNode(element);
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
@@ -158,7 +158,7 @@ class LinkedList {
       }
 
       // Add and link up
-      let newNode = new Node(element);
+      let newNode = new LLNode(element);
       newNode.next = currentNode;
       previousNode.next = newNode;
 

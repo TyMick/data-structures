@@ -17,10 +17,10 @@ class LinkedList:
     def add(self, element):
         """Add a new element to the end of the list."""
         if self.head:
-            currentNode = self.head
-            while currentNode.next:
-                currentNode = currentNode.next
-            currentNode.next = Node(element)
+            current_node = self.head
+            while current_node.next:
+                current_node = current_node.next
+            current_node.next = Node(element)
         else:
             self.head = Node(element)
         self.length += 1
@@ -35,15 +35,15 @@ class LinkedList:
                 self.length -= 1
             else:
                 # Search for element
-                currentNode = self.head.next
-                previousNode = self.head
-                while currentNode:
-                    if currentNode.element == element:
+                current_node = self.head.next
+                previous_node = self.head
+                while current_node:
+                    if current_node.element == element:
                         # Link adjacent nodes to each other
-                        previousNode.next = currentNode.next
+                        previous_node.next = current_node.next
                         self.length -= 1
                         break
-                    currentNode = currentNode.next
+                    current_node = current_node.next
 
     def size(self):
         """Return the current number of elements in the list."""
@@ -64,11 +64,11 @@ class LinkedList:
         list (or `-1` if the list does not contain this element).
         """
         index = 0
-        currentNode = self.head
-        while currentNode:
-            if currentNode.element == element:
+        current_node = self.head
+        while current_node:
+            if current_node.element == element:
                 return index
-            currentNode = currentNode.next
+            current_node = current_node.next
             index += 1
         return -1
 
@@ -80,10 +80,10 @@ class LinkedList:
         if index < 0 or index >= self.length:
             return None
         else:
-            currentNode = self.head
+            current_node = self.head
             for _ in range(index):
-                currentNode = currentNode.next
-            return currentNode.element
+                current_node = current_node.next
+            return current_node.element
 
     def remove_at(self, index):
         """
@@ -100,19 +100,19 @@ class LinkedList:
             return removed
         else:
             # Find nodes at and around index
-            currentIndex = 1
-            previousNode = self.head
-            currentNode = self.head.next
-            while currentIndex < index:
-                previousNode = currentNode
-                currentNode = currentNode.next
-                currentIndex += 1
+            current_index = 1
+            previous_node = self.head
+            current_node = self.head.next
+            while current_index < index:
+                previous_node = current_node
+                current_node = current_node.next
+                current_index += 1
 
             # Link adjacent nodes to each other
-            previousNode.next = currentNode.next
+            previous_node.next = current_node.next
 
             self.length -= 1
-            return currentNode.element
+            return current_node.element
 
     def add_at(self, index, element):
         """
@@ -123,23 +123,23 @@ class LinkedList:
         if index < 0 or index > self.length:
             return False
         elif index == 0:
-            newNode = Node(element)
-            newNode.next = self.head
-            self.head = newNode
+            new_node = Node(element)
+            new_node.next = self.head
+            self.head = new_node
             self.length += 1
         else:
             # Find nodes at and around index
-            currentIndex = 1
-            currentNode = self.head.next
-            previousNode = self.head
-            while currentIndex < index:
-                previousNode = currentNode
-                currentNode = currentNode.next
-                currentIndex += 1
+            current_index = 1
+            current_node = self.head.next
+            previous_node = self.head
+            while current_index < index:
+                previous_node = current_node
+                current_node = current_node.next
+                current_index += 1
 
             # Add and link up
-            newNode = Node(element)
-            newNode.next = currentNode
-            previousNode.next = newNode
+            new_node = Node(element)
+            new_node.next = current_node
+            previous_node.next = new_node
 
             self.length += 1

@@ -28,8 +28,11 @@ class DoublyLinkedList {
     }
   }
 
-  /** Remove all ocurrences of the given element from the list. */
-  remove(element: any) {
+  /**
+   * Remove all ocurrences of the given element from the list (or return `null`
+   * if the element is not present).
+   */
+  remove(element: any): void | null {
     if (this.head) {
       // Remove as many heads as necessary
       while (this.head.data === element) {

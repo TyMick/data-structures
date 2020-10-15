@@ -6,7 +6,7 @@
  * value pairs at the same hashed index as needed.
  */
 class HashTable {
-  collection = {};
+  collection: { [index: number]: { [key: string]: any } } = {};
 
   private hash(string: string): number {
     let hashed: number = 0;

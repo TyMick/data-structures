@@ -3,6 +3,12 @@
     "target": "es5",
     "outDir": "js/",
     "sourceMap": true,
-    "lib": ["es5", "webworker"]
+    "lib": ["es5", "webworker"],
+    "strict": true,
+    "strictNullChecks": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }

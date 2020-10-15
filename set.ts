@@ -1,6 +1,6 @@
 /** A set data structure, unordered with no duplicate values. */
 class Set {
-  dictionary = {};
+  dictionary: { [value: string]: true } = {};
   length = 0;
 
   /**

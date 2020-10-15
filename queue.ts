@@ -1,5 +1,5 @@
 /** A queue data structure, with first-in-first-out functionality. */
-class Queue {
+export default class Queue {
   collection: any[] = [];
 
   /** Add an element to the end of the queue. */

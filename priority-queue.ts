@@ -3,7 +3,7 @@
  * Items will be ordered first in descending order of priority, then in
  * descending order of length of time in the queue.
  */
-class PriorityQueue {
+export default class PriorityQueue {
   collection: Array<[any, number]> = [];
 
   /**

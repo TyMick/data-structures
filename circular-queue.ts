@@ -2,7 +2,7 @@
  * A circlular queue: a first-in-first-out data structure with a fixed buffer
  * size.
  */
-class CircularQueue {
+export default class CircularQueue {
   queue: any[] = [];
   readPos = 0;
   writePos = 0;

@@ -1,5 +1,5 @@
 /** A set data structure, unordered with no duplicate values. */
-class Set {
+export default class Set {
   dictionary: { [value: string]: true } = {};
   length = 0;
 

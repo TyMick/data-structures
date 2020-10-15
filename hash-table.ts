@@ -5,7 +5,7 @@
  * times. This implementation handles collisions by simply storing multiple key-
  * value pairs at the same hashed index as needed.
  */
-class HashTable {
+export default class HashTable {
   collection: { [index: number]: { [key: string]: any } } = {};
 
   private hash(string: string): number {

@@ -13,7 +13,7 @@ class Node {
  * A doubly-linked list data structure, where each node in the list contains
  * references for both the node before it and the node after it.
  */
-class DoublyLinkedList {
+export default class DoublyLinkedList {
   head: Node = null;
   tail: Node = null;
 

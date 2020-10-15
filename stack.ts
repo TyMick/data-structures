@@ -1,5 +1,5 @@
 /** A stack data structure, with last-in-first-out functionality. */
-class Stack {
+export default class Stack {
   collection: any[] = [];
 
   /** Add an element to the top of the stack. */

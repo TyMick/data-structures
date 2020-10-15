@@ -11,7 +11,7 @@ class Node {
  * A linked list data structure, where each node in the list contains a
  * reference to the node after it.
  */
-class LinkedList {
+export default class LinkedList {
   length = 0;
   head: Node = null;
 

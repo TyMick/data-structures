@@ -121,7 +121,7 @@ class Set {
    * passed set.
    */
   isSubset(otherSet: Set): boolean {
-    let isSubset: boolean = true;
+    let isSubset = true;
     for (const value of this.values()) {
       if (!otherSet.has(value)) {
         isSubset = false;

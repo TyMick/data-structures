@@ -12,7 +12,7 @@ class Node {
  * reference to the node after it.
  */
 class LinkedList {
-  length: number = 0;
+  length = 0;
   head: Node = null;
 
   /** Add a new element to the end of the list. */
@@ -75,7 +75,7 @@ class LinkedList {
    * the list (or `-1` if the list does not contain this element).
    */
   indexOf(element: any): number {
-    let index: number = 0;
+    let index = 0;
     let currentNode: Node = this.head;
     while (currentNode) {
       if (currentNode.element === element) {

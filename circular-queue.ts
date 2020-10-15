@@ -4,8 +4,8 @@
  */
 class CircularQueue {
   queue: any[] = [];
-  readPos: number = 0;
-  writePos: number = 0;
+  readPos = 0;
+  writePos = 0;
   size: number;
 
   constructor(size: number) {

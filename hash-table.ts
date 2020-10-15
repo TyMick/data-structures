@@ -9,7 +9,7 @@ class HashTable {
   collection: { [index: number]: { [key: string]: any } } = {};
 
   private hash(string: string): number {
-    let hashed: number = 0;
+    let hashed = 0;
     for (let i = 0; i < string.length; i++) {
       hashed += string.charCodeAt(i);
     }

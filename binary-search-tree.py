@@ -438,49 +438,49 @@ class BinarySearchTree:
 
         self.mode = "right-to-left" if self.mode == "left-to-right" else "left-to-right"
 
+    @staticmethod
+    def is_binary_search_tree(tree: any, mode="left-to-right"):
+        """
+        Check if the passed argument is a properly structured binary search tree (that uses
+        "root", "left", "right", and "value" properties) without just checking if it's an
+        instance of the `BinarySearchTree` class.
+        """
 
-def is_binary_search_tree(tree: any, mode="left-to-right"):
-    """
-    Check if the passed argument is a properly structured binary search tree (that uses
-    "root", "left", "right", and "value" properties) without just checking if it's an
-    instance of the `BinarySearchTree` class.
-    """
+        if hasattr(tree, "root"):
 
-    if hasattr(tree, "root"):
-
-        def is_binary_search_node(node: any):
-            if node is None:
-                return True
-
-            try:
-                if (
-                    node.left is None
-                    and node.right is None
-                    and (type(node.value) is int or type(node.value) is float)
-                ):
+            def is_binary_search_node(node: any):
+                if node is None:
                     return True
 
-                elif node.left is None and is_right_of(
-                    node.right.value, node.value, mode
-                ):
-                    return is_binary_search_node(node.right)
+                try:
+                    if (
+                        node.left is None
+                        and node.right is None
+                        and (type(node.value) is int or type(node.value) is float)
+                    ):
+                        return True
 
-                elif node.right is None and is_left_of(
-                    node.left.value, node.value, mode
-                ):
-                    return is_binary_search_node(node.left)
+                    elif node.left is None and is_right_of(
+                        node.right.value, node.value, mode
+                    ):
+                        return is_binary_search_node(node.right)
 
-                elif is_left_of(node.left.value, node.value, mode) and is_right_of(
-                    node.right.value, node.value, mode
-                ):
-                    return is_binary_search_node(node.left) and is_binary_search_node(
-                        node.right
-                    )
+                    elif node.right is None and is_left_of(
+                        node.left.value, node.value, mode
+                    ):
+                        return is_binary_search_node(node.left)
 
-            finally:
-                return False
+                    elif is_left_of(node.left.value, node.value, mode) and is_right_of(
+                        node.right.value, node.value, mode
+                    ):
+                        return is_binary_search_node(
+                            node.left
+                        ) and is_binary_search_node(node.right)
 
-        return is_binary_search_node(tree.root)
+                finally:
+                    return False
 
-    else:
-        return False
+            return is_binary_search_node(tree.root)
+
+        else:
+            return False

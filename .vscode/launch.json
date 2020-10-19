@@ -5,14 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Current File",
+      "name": "Python: run current file",
       "type": "python",
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal"
     },
     {
-      "name": "Launch",
+      "name": "TypeScript: run current file",
       "type": "node",
       "request": "launch",
       "program": "${file}",
@@ -25,19 +25,7 @@
       "externalConsole": false,
       "sourceMaps": true,
       "outDir": "${workspaceRoot}/js",
-      "preLaunchTask": "tsc: watch - tsconfig.json"
-    },
-    {
-      "name": "Attach",
-      "type": "node",
-      "request": "attach",
-      "port": 5858,
-      "address": "localhost",
-      "restart": false,
-      "sourceMaps": false,
-      "outDir": null,
-      "localRoot": "${workspaceRoot}",
-      "remoteRoot": null
+      "preLaunchTask": "TypeScript: watch"
     }
   ]
 }

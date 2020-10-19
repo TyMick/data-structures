@@ -1,0 +1,42 @@
+# 12 Common Data Structures in TypeScript and Python
+
+I first wrote the backbone for these data structure implementations in JavaScript while completing freeCodeCamp's [Coding Interview Data Structure Challenges](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/). Since then I've ported my JavaScript code to both TypeScript and Python and added a few additional features.
+
+Please enjoy, and [let me know](https://tymick.me/connect "Connect – Ty Mick") if you have any questions!
+
+- [Stack](https://en.wikipedia.org/wiki/Stack_%28abstract_data_type%29)
+  - [TypeScript](/stack.ts)
+  - [Python](/stack.py)
+- [Queue](https://en.wikipedia.org/wiki/Queue_%28abstract_data_type%29)
+  - [TypeScript](/queue.ts)
+  - [Python](/queue.py)
+- [Priority queue](https://en.wikipedia.org/wiki/Priority_queue)
+  - [TypeScript](/priority-queue.ts)
+  - [Python](/priority-queue.py)
+- [Circular queue](https://en.wikipedia.org/wiki/Circular_buffer)
+  - [TypeScript](/circular-queue.ts)
+  - [Python](/circular-queue.py)
+- [Set](https://en.wikipedia.org/wiki/Set_%28abstract_data_type%29)
+  - [TypeScript](set.ts)
+  - _(I figured implementing this one in Python would be a bit silly, since Python has had a built-in set type [since 2004](https://www.python.org/downloads/release/python-240/ "Python Release 2.4.0").)_
+- [Hash table](https://en.wikipedia.org/wiki/Hash_table)
+  - [TypeScript](/hash-table.ts)
+  - [Python](/hash-table.py)
+- [Linked list](https://en.wikipedia.org/wiki/Linked_list)
+  - [TypeScript](/linked-list.ts)
+  - [Python](/linked-list.py)
+- [Doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list)
+  - [TypeScript](/doubly-linked-list.ts)
+  - [Python](/doubly-linked-list.py)
+- [Binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)
+  - [TypeScript](/binary-search-tree.ts)
+  - [Python](/binary-search-tree.py)
+- [Trie search tree](https://en.wikipedia.org/wiki/Trie)
+  - [TypeScript](/trie-search-tree.ts)
+  - [Python](/trie-search-tree.py)
+- [Max heap](https://en.wikipedia.org/wiki/Binary_heap)
+  - [TypeScript](/max-heap.ts)
+  - [Python](/max-heap.py)
+- [Min heap](https://en.wikipedia.org/wiki/Binary_heap)
+  - [TypeScript](/min-heap.ts)
+  - [Python](/min-heap.py)

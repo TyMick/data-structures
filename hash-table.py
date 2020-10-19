@@ -17,12 +17,20 @@ class HashTable:
         return hashed
 
     def add(self, key, value):
-        """Add a key-value pair to the table."""
+        """
+        Add a key-value pair to the table. Assigning values via `table[key] = value` is
+        identical to this method.
+        """
         index = self._hash(key)
         self.collection.setdefault(index, {})[key] = value
 
+    __setitem__ = add
+
     def remove(self, key):
-        """Given a key, remove its key-value pair from the table (if present)."""
+        """
+        Given a key, remove its key-value pair from the table (if present). Calling `del
+        table[key]` is identical to this method.
+        """
         index = self._hash(key)
         try:
             del self.collection[index][key]
@@ -31,13 +39,17 @@ class HashTable:
         finally:
             pass
 
+    __delitem__ = remove
+
     def lookup(self, key):
         """
         Return a given key's associated value (or `None` if the key is not present in
-        the table).
+        the table). Calling `table[key]` is identical to this method.
         """
         index = self._hash(key)
         return self.collection.get(index, {}).get(key, None)
+
+    __getitem__ = lookup
 
     def clear(self):
         """Clear the contents of the table."""

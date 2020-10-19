@@ -33,8 +33,13 @@ class PriorityQueue:
         return self.collection.pop(0)[0]
 
     def size(self):
-        """Return the number of elements in the queue."""
+        """
+        Return the number of elements in the queue. Calling `len(queue)` is identical to
+        this method.
+        """
         return len(self.collection)
+
+    __len__ = size
 
     def is_empty(self):
         """Return whether or not the queue is currently empty."""

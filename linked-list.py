@@ -46,8 +46,13 @@ class LinkedList:
                     current_node = current_node.next
 
     def size(self):
-        """Return the current number of elements in the list."""
+        """
+        Return the current number of elements in the list. Calling `len(linked_list)` is
+        identical to this method.
+        """
         return self.length
+
+    __len__ = size
 
     def is_empty(self):
         """Return whether or not the list is empty."""
@@ -75,7 +80,7 @@ class LinkedList:
     def element_at(self, index):
         """
         Return the element at the given index in the list (or `None` if the list has no
-        such index).
+        such index). Calling `linked_list[index]` is identical to this method.
         """
         if index < 0 or index >= self.length:
             return None
@@ -85,10 +90,13 @@ class LinkedList:
                 current_node = current_node.next
             return current_node.element
 
+    __getitem__ = element_at
+
     def remove_at(self, index):
         """
         Remove and return the element at the given index from the list (or return `None`
-        if the list has no such index).
+        if the list has no such index). Calling `del linked_list[index]` is identical to
+        this method.
         """
 
         if index < 0 or index >= self.length:
@@ -113,6 +121,8 @@ class LinkedList:
 
             self.length -= 1
             return current_node.element
+
+    __delitem__ = remove_at
 
     def add_at(self, index, element):
         """

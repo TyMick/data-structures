@@ -154,13 +154,13 @@ export default class BinarySearchTree {
   }
 
   /** Return whether or not the given value is present in the tree. */
-  isPresent(value: number): boolean {
-    const isPresentFrom = (node: Node, searchValue: number): boolean => {
+  contains(value: number): boolean {
+    const searchFrom = (node: Node, searchValue: number): boolean => {
       if (node) {
         if (isLeftOf(searchValue, node.value, this.mode)) {
-          return isPresentFrom(node.left, searchValue);
+          return searchFrom(node.left, searchValue);
         } else if (isRightOf(searchValue, node.value, this.mode)) {
-          return isPresentFrom(node.right, searchValue);
+          return searchFrom(node.right, searchValue);
         } else {
           // Search value has been found
           return true;
@@ -171,7 +171,7 @@ export default class BinarySearchTree {
       }
     };
 
-    return isPresentFrom(this.root, value);
+    return searchFrom(this.root, value);
   }
 
   /** Clear the contents of the tree. */

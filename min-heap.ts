@@ -1,16 +1,3 @@
-// check if array is sorted
-function isSorted(arr: number[]) {
-  var check = (i: number): boolean =>
-    i == arr.length - 1 ? true : arr[i] > arr[i + 1] ? false : check(i + 1);
-  return check(0);
-}
-// generate a randomly filled array
-var array = new Array();
-(function createArray(size = 5): number[] {
-  array.push(+(Math.random() * 100).toFixed(0));
-  return size > 1 ? createArray(size - 1) : undefined;
-})(25);
-
 /**
  * A binary min heap implemented as an implicit data structure. Keys are stored
  * as an array, and parent-child relationships are determined by relative
@@ -19,7 +6,7 @@ var array = new Array();
  * will be located at `Math.floor(i / 2)`. All parent nodes are less than or
  * equal to their child nodes.
  */
-class MinHeap {
+export class MinHeap {
   heap: number[] = [null];
 
   /** Add a value to the collection, maintaining the heap property. */

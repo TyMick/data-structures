@@ -17,8 +17,13 @@ class Stack:
         return self.collection.pop()
 
     def size(self):
-        """Return the number of elements in the stack."""
+        """
+        Return the number of elements in the stack. Calling `len(stack)` is identical to
+        this method.
+        """
         return len(self.collection)
+
+    __len__ = size
 
     def is_empty(self):
         """Return whether or not the stack is currently empty."""

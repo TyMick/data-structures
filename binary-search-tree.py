@@ -147,15 +147,18 @@ class BinarySearchTree:
             else:
                 self.root = replacement
 
-    def is_present(self, value):
-        """Return whether or not the given value is present in the tree."""
+    def contains(self, value):
+        """
+        Return whether or not the given value is present in the tree. Using the `in`
+        keyword (e.g., `value in tree`) is identical to this method.
+        """
 
-        def is_present_from(node, search_value):
+        def search_from(node, search_value):
             if node:
                 if is_left_of(search_value, node.value, self.mode):
-                    return is_present_from(node.left, search_value)
+                    return search_from(node.left, search_value)
                 elif is_right_of(search_value, node.value, self.mode):
-                    return is_present_from(node.right, search_value)
+                    return search_from(node.right, search_value)
                 else:
                     # Search value has been found
                     return True
@@ -163,7 +166,9 @@ class BinarySearchTree:
                 # Search value is not present
                 return False
 
-        return is_present_from(self.root, value)
+        return search_from(self.root, value)
+
+    __contains__ = contains
 
     def clear(self):
         """Clear the contents of the tree."""

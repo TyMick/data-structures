@@ -10,15 +10,14 @@ typedef struct Stack {
   int top;
 } Stack;
 
-/** Constructor */
 Stack *newStack(int maxSize) {
-  Stack *pt = malloc(sizeof(Stack));
+  Stack *ptr = malloc(sizeof(Stack));
 
-  pt->maxSize = maxSize;
-  pt->array = malloc(maxSize * sizeof(int));
-  pt->top = -1;
+  ptr->maxSize = maxSize;
+  ptr->array = malloc(maxSize * sizeof(int));
+  ptr->top = -1;
 
-  return pt;
+  return ptr;
 }
 
 /** Returns the number of elements in a stack. */
@@ -30,75 +29,101 @@ bool isEmpty(Stack *stack) { return size(stack) == 0; }
 /** Returns whether or not a stack is full. */
 bool isFull(Stack *stack) { return size(stack) == stack->maxSize; }
 
-/** Adds an element to the top of a stack. */
-void push(Stack *stack, int element) {
+/**
+ * Adds an element to the top of a stack.
+ *
+ * @return `0` if the element was successfully added, `1` if the stack was
+ *   already full.
+ */
+int push(Stack *stack, int element) {
   if (isFull(stack)) {
-    printf("Error: stack is already full.\n");
-    exit(EXIT_FAILURE);
+    printf("Push error: stack is already full.\n");
+    return 1;
   }
 
   stack->array[++stack->top] = element;
+  return 0;
 }
 
-/** Returns the element at the top of a stack, leaving it in place. */
-int peek(Stack *stack) {
+/**
+ * Returns the element at the top of a stack, leaving it in place.
+ *
+ * @return A pointer to the element, or `NULL` if the stack is empty.
+ */
+int *peek(Stack *stack) {
   if (isEmpty(stack)) {
-    printf("Error: stack is empty.\n");
-    exit(EXIT_FAILURE);
+    printf("Peek error: stack is empty.\n");
+    return NULL;
   }
 
-  return stack->array[stack->top];
+  return &stack->array[stack->top];
 }
 
-/** Removes and returns the element at the top of a stack. */
-int pop(Stack *stack) {
+/**
+ * Removes and returns the element at the top of a stack.
+ *
+ * @return A pointer to the element removed, or `NULL` if the stack was already
+ *   empty.
+ */
+int *pop(Stack *stack) {
   if (isEmpty(stack)) {
-    printf("Error: stack is already empty.\n");
-    exit(EXIT_FAILURE);
+    printf("Pop error: stack is already empty.\n");
+    return NULL;
   }
 
-  return stack->array[stack->top--];
+  return &stack->array[stack->top--];
 }
 
 /** Clears the contents of a stack. */
 void clear(Stack *stack) { stack->top = -1; }
 
 /**
-* Prints a stack to the console as comma-separated values ordered from bottom
-* to top.
-*/
+ * Prints a stack to the console as comma-separated values ordered from bottom
+ * to top.
+ */
 void print(Stack *stack) {
   if (!isEmpty(stack)) {
     printf("%d", stack->array[0]);
     for (int i = 1; i <= stack->top; i++) {
       printf(", %d", stack->array[i]);
     }
-    printf("\n");
   }
+
+  printf("\n");
 }
 
 int main() {
   Stack *s = newStack(5);
 
+  print(s);
   assert(isEmpty(s));
 
-  push(s, 2);
+  assert(pop(s) == NULL);
+  assert(peek(s) == NULL);
+
+  assert(push(s, 2) == 0);
+  assert(*peek(s) == 2);
+
   push(s, 4);
   push(s, 6);
   assert(size(s) == 3);
   assert(!isEmpty(s));
   assert(!isFull(s));
 
-  assert(pop(s) == 6);
+  assert(*pop(s) == 6);
   assert(size(s) == 2);
 
   push(s, 99);
-  assert(peek(s) == 99);
+  push(s, 47);
+  pop(s);
+  assert(*peek(s) == 99);
 
   push(s, 34);
   push(s, 83);
   assert(size(s) == 5);
   assert(isFull(s));
+
+  assert(push(s, 9) == 1);
 
   print(s);
 

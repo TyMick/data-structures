@@ -25,7 +25,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Add a value to the tree.
+   * Adds a value to the tree.
    * @param {number} value - The value you wish to add.
    * @returns `true` if the value was added successfully or `false` if the value
    * was already present in the tree.
@@ -38,7 +38,7 @@ export default class BinarySearchTree {
             // Recurse
             return addTo(node.left, newValue);
           } else {
-            // Add new value
+            // Adds new value
             node.left = new Node(newValue);
             return true;
           }
@@ -47,7 +47,7 @@ export default class BinarySearchTree {
             // Recurse
             return addTo(node.right, newValue);
           } else {
-            // Add new value
+            // Adds new value
             node.right = new Node(newValue);
             return true;
           }
@@ -59,15 +59,15 @@ export default class BinarySearchTree {
 
       return addTo(this.root, value);
     } else {
-      // Add new value as root
+      // Adds new value as root
       this.root = new Node(value);
       return true;
     }
   }
 
   /**
-   * Remove a given value from the tree, maintaining binary tree structure (or
-   * return `null` if the value is not present).
+   * Removes a given value from the tree, maintaining binary tree structure (or
+   * returns `null` if the value is not present).
    */
   remove(value: number): void | null {
     if (!this.root) return null;
@@ -90,7 +90,7 @@ export default class BinarySearchTree {
     // Case 1: target has no children
     if (numChildren === 0) {
       if (parent) {
-        // Remove parent reference
+        // Removes parent reference
         if (target === parent.left) {
           parent.left = null;
         } else {
@@ -129,7 +129,7 @@ export default class BinarySearchTree {
 
       if (leafParent) {
         // Replacement is a leaf
-        // Remove parent reference
+        // Removes parent reference
         leafParent.left = null;
 
         // Link replacement to target children
@@ -153,7 +153,7 @@ export default class BinarySearchTree {
     }
   }
 
-  /** Return whether or not the given value is present in the tree. */
+  /** Returns whether or not the given value is present in the tree. */
   contains(value: number): boolean {
     const searchFrom = (node: Node, searchValue: number): boolean => {
       if (node) {
@@ -174,13 +174,13 @@ export default class BinarySearchTree {
     return searchFrom(this.root, value);
   }
 
-  /** Clear the contents of the tree. */
+  /** Clears the contents of the tree. */
   clear(): void {
     this.root = null;
     this.mode = "left-to-right";
   }
 
-  /** Return the minimum value in the tree (or `null` if the tree is empty). */
+  /** Returns the minimum value in the tree (or `null` if the tree is empty). */
   findMin(): number | null {
     // Find leftmost node
     let currentNode: Node = this.root;
@@ -191,7 +191,7 @@ export default class BinarySearchTree {
     return currentNode?.value ?? null;
   }
 
-  /** Return the maximum value in the tree (or `null` if the tree is empty). */
+  /** Returns the maximum value in the tree (or `null` if the tree is empty). */
   findMax(): number | null {
     // Find rightmost node
     let currentNode: Node = this.root;
@@ -203,7 +203,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Return the distance from the root node to the farthest leaf node (or `-1`
+   * Returns the distance from the root node to the farthest leaf node (or `-1`
    * if the tree is empty).
    */
   findMaxHeight(): number {
@@ -228,8 +228,8 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Return the distance from the root node to the nearest leaf node (or `-1` if
-   * the tree is empty).
+   * Returns the distance from the root node to the nearest leaf node (or `-1`
+   * if the tree is empty).
    */
   findMinHeight(): number {
     if (this.root) {
@@ -261,7 +261,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Return whether or not the tree is balanced (if its minimum height and
+   * Returns whether or not the tree is balanced (if its minimum height and
    * maximum height differ by at most 1).
    */
   isBalanced(): boolean {
@@ -303,7 +303,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Return an array of all values in the tree arranged in the sequence of an
+   * Returns an array of all values in the tree arranged in the sequence of an
    * in-order depth-first traversal of the tree (or `null` if the tree is
    * empty).
    */
@@ -312,11 +312,11 @@ export default class BinarySearchTree {
 
     (function addValuesFrom(node: Node): void {
       if (node) {
-        // Add left values
+        // Adds left values
         addValuesFrom(node.left);
-        // Add this node's value
+        // Adds this node's value
         values.push(node.value);
-        // Add right values
+        // Adds right values
         addValuesFrom(node.right);
       }
     })(this.root);
@@ -325,7 +325,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Return an array of all values in the tree arranged in the sequence of a
+   * Returns an array of all values in the tree arranged in the sequence of a
    * pre-order depth-first traversal of the tree (or `null` if the tree is
    * empty).
    */
@@ -334,11 +334,11 @@ export default class BinarySearchTree {
 
     (function addValuesFrom(node: Node): void {
       if (node) {
-        // Add this node's value
+        // Adds this node's value
         values.push(node.value);
-        // Add left values
+        // Adds left values
         addValuesFrom(node.left);
-        // Add right values
+        // Adds right values
         addValuesFrom(node.right);
       }
     })(this.root);
@@ -347,7 +347,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Return an array of all values in the tree arranged in the sequence of a
+   * Returns an array of all values in the tree arranged in the sequence of a
    * post-order depth-first traversal of the tree (or `null` if the tree is
    * empty).
    */
@@ -356,11 +356,11 @@ export default class BinarySearchTree {
 
     (function addValuesFrom(node: Node): void {
       if (node) {
-        // Add left values
+        // Adds left values
         addValuesFrom(node.left);
-        // Add right values
+        // Adds right values
         addValuesFrom(node.right);
-        // Add this node's value
+        // Adds this node's value
         values.push(node.value);
       }
     })(this.root);
@@ -369,7 +369,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Return an array of all values in the tree arranged in the sequence of a
+   * Returns an array of all values in the tree arranged in the sequence of a
    * left-to-right breadth-first traversal of the tree (or `null` if the tree is
    * empty).
    */
@@ -380,9 +380,9 @@ export default class BinarySearchTree {
 
       while (queue.length) {
         const currentNode = queue.shift();
-        // Add current value
+        // Adds current value
         values.push(currentNode.value);
-        // Add children to queue
+        // Adds children to queue
         if (currentNode.left) queue.push(currentNode.left);
         if (currentNode.right) queue.push(currentNode.right);
       }
@@ -394,7 +394,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Return an array of all values in the tree arranged in the sequence of a
+   * Returns an array of all values in the tree arranged in the sequence of a
    * right-to-left breadth-first traversal of the tree (or `null` if the tree is
    * empty).
    */
@@ -405,9 +405,9 @@ export default class BinarySearchTree {
 
       while (queue.length) {
         const currentNode = queue.shift();
-        // Add current value
+        // Adds current value
         values.push(currentNode.value);
-        // Add children to queue
+        // Adds children to queue
         if (currentNode.right) queue.push(currentNode.right);
         if (currentNode.left) queue.push(currentNode.left);
       }
@@ -419,7 +419,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Invert the tree in-place in linear time, transforming it into its mirror
+   * Inverts  the tree in-place in linear time, transforming it into its mirror
    * image, such that an in-order traversal of this inverted tree will visit
    * nodes in the reverse order of an in-order traversal of the original tree.
    */
@@ -441,7 +441,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Check if the passed argument is a properly structured binary search tree
+   * Checks if the passed argument is a properly structured binary search tree
    * (that uses "root", "left", "right", and "value" properties) without just
    * checking if it's an instance of the `BinarySearchTree` class.
    */

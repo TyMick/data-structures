@@ -15,7 +15,7 @@ export default class LinkedList {
   length = 0;
   head: Node = null;
 
-  /** Add a new element to the end of the list. */
+  /** Adds a new element to the end of the list. */
   add(element: any): void {
     if (this.head) {
       let currentNode: Node = this.head;
@@ -30,7 +30,8 @@ export default class LinkedList {
   }
 
   /**
-   * Remove the first occurrence of a given element from the list (if possible).
+   * Removes the first occurrence of a given element from the list (if
+   * possible).
    */
   remove(element: any): void {
     if (this.head) {
@@ -54,24 +55,24 @@ export default class LinkedList {
     }
   }
 
-  /** Return the current number of elements in the list. */
+  /** Returns the current number of elements in the list. */
   size(): number {
     return this.length;
   }
 
-  /** Return whether or not the list is empty. */
+  /** Returns whether or not the list is empty. */
   isEmpty(): boolean {
     return this.length === 0;
   }
 
-  /** Clear the contents of the list. */
+  /** Clears the contents of the list. */
   clear(): void {
     this.head = null;
     this.length = 0;
   }
 
   /**
-   * Return the numerical index of the first occurrence of the given element in
+   * Returns the numerical index of the first occurrence of the given element in
    * the list (or `-1` if the list does not contain this element).
    */
   indexOf(element: any): number {
@@ -88,7 +89,7 @@ export default class LinkedList {
   }
 
   /**
-   * Return the element at the given index in the list (or `undefined` if the
+   * Returns the element at the given index in the list (or `undefined` if the
    * list has no such index).
    */
   elementAt(index: number): any {
@@ -104,8 +105,8 @@ export default class LinkedList {
   }
 
   /**
-   * Remove and return the element at the given index from the list (or return
-   * `null` if the list has no such index).
+   * Removes and returns the element at the given index from the list (or
+   * returns `null` if the list has no such index).
    */
   removeAt(index: number): any {
     if (index < 0 || index >= this.length) {
@@ -135,7 +136,7 @@ export default class LinkedList {
   }
 
   /**
-   * Insert a given element at a given index in the list (or return `false` if
+   * Inserts a given element at a given index in the list (or returns `false` if
    * given an invalid index).
    */
   addAt(index: number, element: any): false | void {
@@ -157,7 +158,7 @@ export default class LinkedList {
         currentIndex++;
       }
 
-      // Add and link up
+      // Adds and link up
       let newNode = new Node(element);
       newNode.next = currentNode;
       previousNode.next = newNode;

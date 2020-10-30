@@ -22,7 +22,7 @@ export default class CircularQueue {
   }
 
   /**
-   * Add an element to the buffer if the buffer is not already full.
+   * Adds an element to the buffer if the buffer is not already full.
    * @param element - The element you wish to add.
    * @returns The element itself if it was added, or `null` if the buffer was
    * full.
@@ -39,7 +39,7 @@ export default class CircularQueue {
   }
 
   /**
-   * Remove an element from the buffer if the buffer is not already empty.
+   * Removes an element from the buffer if the buffer is not already empty.
    * @returns The element removed (or `null` if the buffer was empty).
    */
   dequeue(): any {
@@ -54,7 +54,7 @@ export default class CircularQueue {
     }
   }
 
-  /** Clear the contents of the queue. */
+  /** Clears the contents of the queue. */
   clear(): void {
     for (let i = 0; i < this.size; i++) {
       this.queue[i] = null;
@@ -64,7 +64,7 @@ export default class CircularQueue {
   }
 
   /**
-   * Print the queue to the console as an array, starting with the element that
+   * Prints the queue to the console as an array, starting with the element that
    * will be read next.
    */
   print(): any[] {

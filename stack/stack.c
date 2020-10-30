@@ -21,16 +21,16 @@ Stack *newStack(int maxSize) {
   return pt;
 }
 
-/** Return the number of elements in a stack. */
+/** Returns the number of elements in a stack. */
 int size(Stack *stack) { return stack->top + 1; }
 
-/** Return whether or not a stack is empty. */
+/** Returns whether or not a stack is empty. */
 bool isEmpty(Stack *stack) { return size(stack) == 0; }
 
-/** Return whether or not a stack is full. */
+/** Returns whether or not a stack is full. */
 bool isFull(Stack *stack) { return size(stack) == stack->maxSize; }
 
-/** Add an element to the top of a stack. */
+/** Adds an element to the top of a stack. */
 void push(Stack *stack, int element) {
   if (isFull(stack)) {
     printf("Error: stack is already full.\n");
@@ -40,7 +40,7 @@ void push(Stack *stack, int element) {
   stack->array[++stack->top] = element;
 }
 
-/** Return the element at the top of a stack, leaving it in place. */
+/** Returns the element at the top of a stack, leaving it in place. */
 int peek(Stack *stack) {
   if (isEmpty(stack)) {
     printf("Error: stack is empty.\n");
@@ -50,7 +50,7 @@ int peek(Stack *stack) {
   return stack->array[stack->top];
 }
 
-/** Remove and return the element at the top of a stack. */
+/** Removes and returns the element at the top of a stack. */
 int pop(Stack *stack) {
   if (isEmpty(stack)) {
     printf("Error: stack is already empty.\n");
@@ -60,13 +60,13 @@ int pop(Stack *stack) {
   return stack->array[stack->top--];
 }
 
-/** Clear the contents of a stack. */
+/** Clears the contents of a stack. */
 void clear(Stack *stack) { stack->top = -1; }
 
 /**
- * Print the stack to the console as comma-separated values ordered from bottom
- * to top.
- */
+* Prints a stack to the console as comma-separated values ordered from bottom
+* to top.
+*/
 void print(Stack *stack) {
   if (!isEmpty(stack)) {
     printf("%d", stack->array[0]);

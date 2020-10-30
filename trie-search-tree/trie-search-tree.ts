@@ -10,7 +10,7 @@ class Node {
 export class Trie {
   root = new Node();
 
-  /** Add a new word to the trie. */
+  /** Adds a new word to the trie. */
   add(word: string): void {
     if (!word.match(/^[A-Za-z]+$/)) {
       throw new TypeError(
@@ -34,7 +34,7 @@ export class Trie {
     })(this.root, word);
   }
 
-  /** Check if a specific word is currently stored in the trie. */
+  /** Checks if a specific word is currently stored in the trie. */
   contains(string: string): boolean {
     if (!string.match(/^[A-Za-z]+$/)) return false;
 
@@ -58,7 +58,7 @@ export class Trie {
   }
 
   /**
-   * Remove a word from the trie, returning a boolean confirming whether or not
+   * Removes a word from the trie, returning a boolean confirming whether or not
    * the word was present (and was therefore removed).
    */
   remove(word: string): boolean {
@@ -89,13 +89,13 @@ export class Trie {
 
     if (!collectNodesFrom(this.root, word)) return false;
 
-    // Remove endpoint from last node
+    // Removes endpoint from last node
     let [currentNode, nextLtr]: [Node, string] = wordNodes.pop();
     currentNode.end = false;
 
     let onSharedPath = Object.keys(currentNode.keys).length > 0;
 
-    // Remove nodes that aren't part of any other word
+    // Removes nodes that aren't part of any other word
     while (wordNodes.length && !onSharedPath) {
       [currentNode, nextLtr] = wordNodes.pop();
       delete currentNode.keys[nextLtr];
@@ -107,12 +107,12 @@ export class Trie {
     return true;
   }
 
-  /** Clear the contents of the trie. */
+  /** Clears the contents of the trie. */
   clear(): void {
     this.root = new Node();
   }
 
-  /** Return an array of all words stored in the trie. */
+  /** Returns an array of all words stored in the trie. */
   getAll(): string[] {
     let words: string[] = [];
 

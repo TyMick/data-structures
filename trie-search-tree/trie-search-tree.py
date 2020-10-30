@@ -17,7 +17,7 @@ class Trie:
         self.root = Node()
 
     def add(self, word):
-        """Add a new word to the trie."""
+        """Adds a new word to the trie."""
 
         if re.search("^[A-Za-z]+$", word) is None:
             raise ValueError(
@@ -39,8 +39,8 @@ class Trie:
 
     def contains(self, string):
         """
-        Check if a specific word is currently stored in the trie. Using the `in` keyword
-        is equivalent to this method (e.g., `string in trie` is the same as
+        Checks if a specific word is currently stored in the trie. Using the `in`
+        keyword is equivalent to this method (e.g., `string in trie` is the same as
         `trie.contains(string)`).
         """
 
@@ -67,7 +67,7 @@ class Trie:
 
     def remove(self, word):
         """
-        Remove a word from the trie and return a boolean confirming whether or not the
+        Removes a word from the trie and returns a boolean confirming whether or not the
         word was present (and was therefore removed).
         """
 
@@ -101,13 +101,13 @@ class Trie:
         if not collect_nodes_from(self.root, word):
             return False
 
-        # Remove endpoint from last node
+        # Removes endpoint from last node
         current_node, next_ltr = word_nodes.pop()
         current_node.end = False
 
         on_shared_path = len(current_node.keys) > 0
 
-        # Remove nodes that aren't part of any other word
+        # Removes nodes that aren't part of any other word
         while word_nodes and not on_shared_path:
             current_node, next_ltr = word_nodes.pop()
             del current_node.keys[next_ltr]
@@ -117,11 +117,11 @@ class Trie:
         return True
 
     def clear(self):
-        """Clear the contents of the trie."""
+        """Clears the contents of the trie."""
         self.root = Node()
 
     def get_all(self):
-        """Return a set of all words stored in the trie."""
+        """Returns a set of all words stored in the trie."""
 
         words = set()
 

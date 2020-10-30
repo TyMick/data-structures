@@ -5,37 +5,37 @@ class Stack:
         self.collection = []
 
     def push(self, element):
-        """Add an element to the top of the stack."""
+        """Adds an element to the top of the stack."""
         self.collection.append(element)
 
     def peek(self):
-        """Return the element at the top of the stack, leaving it in place."""
+        """Returns the element at the top of the stack, leaving it in place."""
         return self.collection[-1]
 
     def pop(self):
-        """Remove and return the element at the top of the stack."""
+        """Removes and returns the element at the top of the stack."""
         return self.collection.pop()
 
     def size(self):
         """
-        Return the number of elements in the stack. Calling `len(stack)` is identical to
-        this method.
+        Returns the number of elements in the stack. Calling `len(stack)` is identical
+        to this method.
         """
         return len(self.collection)
 
     __len__ = size
 
     def is_empty(self):
-        """Return whether or not the stack is currently empty."""
+        """Returns whether or not the stack is currently empty."""
         return len(self.collection) == 0
 
     def clear(self):
-        """Clear the contents of the stack."""
+        """Clears the contents of the stack."""
         self.collection = []
 
     def print(self):
         """
-        Print the stack to the console as a list with elements ordered from from bottom
+        Prints the stack to the console as a list with elements ordered from from bottom
         to top.
         """
         print(self.collection)

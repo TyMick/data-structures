@@ -15,7 +15,7 @@ class LinkedList:
         self.head = None
 
     def add(self, element):
-        """Add a new element to the end of the list."""
+        """Adds a new element to the end of the list."""
         if self.head:
             current_node = self.head
             while current_node.next:
@@ -27,7 +27,7 @@ class LinkedList:
 
     def remove(self, element):
         """
-        Remove the first occurrence of a given element from the list (if possible).
+        Removes the first occurrence of a given element from the list (if possible).
         """
         if self.head:
             if self.head.element == element:
@@ -47,25 +47,25 @@ class LinkedList:
 
     def size(self):
         """
-        Return the current number of elements in the list. Calling `len(linked_list)` is
-        identical to this method.
+        Returns the current number of elements in the list. Calling `len(linked_list)`
+        is identical to this method.
         """
         return self.length
 
     __len__ = size
 
     def is_empty(self):
-        """Return whether or not the list is empty."""
+        """Returns whether or not the list is empty."""
         return self.length == 0
 
     def clear(self):
-        """Clear the contents of the list."""
+        """Clears the contents of the list."""
         self.head = None
         self.length = 0
 
     def index_of(self, element):
         """
-        Return the numerical index of the first occurrence of the given element in the
+        Returns the numerical index of the first occurrence of the given element in the
         list (or `-1` if the list does not contain this element).
         """
         index = 0
@@ -79,7 +79,7 @@ class LinkedList:
 
     def element_at(self, index):
         """
-        Return the element at the given index in the list (or `None` if the list has no
+        Returns the element at the given index in the list (or `None` if the list has no
         such index). Calling `linked_list[index]` is identical to this method.
         """
         if index < 0 or index >= self.length:
@@ -94,9 +94,9 @@ class LinkedList:
 
     def remove_at(self, index):
         """
-        Remove and return the element at the given index from the list (or return `None`
-        if the list has no such index). Calling `del linked_list[index]` is identical to
-        this method.
+        Removes and returns the element at the given index from the list (or returns
+        `None` if the list has no such index). Calling `del linked_list[index]` is
+        identical to this method.
         """
 
         if index < 0 or index >= self.length:
@@ -126,8 +126,8 @@ class LinkedList:
 
     def add_at(self, index, element):
         """
-        Insert a given element at a given index in the list (or return `False` if given
-        an invalid index).
+        Inserts a given element at a given index in the list (or returns `False` if
+        given an invalid index).
         """
 
         if index < 0 or index > self.length:
@@ -147,7 +147,7 @@ class LinkedList:
                 current_node = current_node.next
                 current_index += 1
 
-            # Add and link up
+            # Adds and link up
             new_node = Node(element)
             new_node.next = current_node
             previous_node.next = new_node

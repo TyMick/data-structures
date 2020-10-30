@@ -14,7 +14,7 @@ class MinHeap:
         self.heap = [None]
 
     def insert(self, val):
-        """Add a value to the collection, maintaining the heap property."""
+        """Adds a value to the collection, maintaining the heap property."""
 
         self.heap.append(val)
 
@@ -30,7 +30,7 @@ class MinHeap:
 
     def remove(self):
         """
-        Remove and return the greatest value in the collection, then reorder it to
+        Removes and returns the greatest value in the collection, then reorders it to
         maintain the heap property.
         """
 
@@ -84,13 +84,13 @@ class MinHeap:
 
     def print(self):
         """
-        Return a list of all values currently in the heap (in the order of the internal
+        Returns a list of all values currently in the heap (in the order of the internal
         data structure).
         """
         return self.heap[1:]
 
     def sort(self):
-        """Return a list of all values in the heap ordered from greatest to least."""
+        """Returns a list of all values in the heap ordered from greatest to least."""
 
         clone = self.heap.copy()
 

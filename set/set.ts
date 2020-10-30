@@ -4,7 +4,7 @@ export default class Set {
   length = 0;
 
   /**
-   * Add a value to the set (if it is not already present).
+   * Adds a value to the set (if it is not already present).
    * @param {string} value - The value you wish to add.
    * @returns `true` if the value was successfully added, `false` if the value
    * was already present in the set.
@@ -20,7 +20,7 @@ export default class Set {
   }
 
   /**
-   * Remove a value from a set (if present).
+   * Removes a value from a set (if present).
    * @param {string} value - The value you wish to remove.
    * @returns `true` if the value was successfully removed, `false` if the value
    * was not present in the set.
@@ -35,29 +35,29 @@ export default class Set {
     }
   }
 
-  /** Check for the presence of a value. */
+  /** Checks for the presence of a value. */
   has(value: string): boolean {
     return this.dictionary[value] !== undefined;
   }
 
-  /** Return all values in the set as an array. */
+  /** Returns all values in the set as an array. */
   values(): string[] {
     return Object.keys(this.dictionary);
   }
 
-  /** Return the number of (unique) values in the set. */
+  /** Returns the number of (unique) values in the set. */
   size(): number {
     return this.length;
   }
 
-  /** Clear the contents of the set. */
+  /** Clears the contents of the set. */
   clear(): void {
     this.dictionary = {};
     this.length = 0;
   }
 
   /**
-   * Return the union of this set and the set passed to this function; that is,
+   * Returns the union of this set and the set passed to this function; that is,
    * the set of all values present in at least one of the two sets.
    */
   union(otherSet: Set): Set {
@@ -76,7 +76,7 @@ export default class Set {
   }
 
   /**
-   * Return the intersection of this set and the set passed to this function;
+   * Returns the intersection of this set and the set passed to this function;
    * that is, the set of all values present in both of the two sets.
    */
   intersection(otherSet: Set): Set {
@@ -101,7 +101,7 @@ export default class Set {
   }
 
   /**
-   * Return the difference of this set from the set passed to this function;
+   * Returns the difference of this set from the set passed to this function;
    * that is, the set of all values present in this set but not in the passed
    * set.
    */
@@ -116,7 +116,7 @@ export default class Set {
   }
 
   /**
-   * Return whether or not this set is a subset of the set passed to this
+   * Returns whether or not this set is a subset of the set passed to this
    * function; that is, whether or not all values in this set are also in the
    * passed set.
    */

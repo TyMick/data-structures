@@ -7,8 +7,8 @@ export default class PriorityQueue {
   collection: Array<[any, number]> = [];
 
   /**
-   * Add an element to the end of the queue, then move it in front of any lower-
-   * priority items.
+   * Adds an element to the end of the queue, then moves it in front of any
+   * lower-priority items.
    * @param element - The element you wish to add.
    * @param {number} [priority=0] - The priority you wish to give this element
    * in the queue. Greater numbers indicate higher priority.
@@ -22,33 +22,33 @@ export default class PriorityQueue {
     this.collection.splice(insertIndex, 0, [element, priority]);
   }
 
-  /** Return the element at the front of the queue, leaving it in place. */
+  /** Returns the element at the front of the queue, leaving it in place. */
   front(): any {
     return this.collection[0][0];
   }
 
-  /** Remove and return the element at the front of the queue. */
+  /** Removes and returns the element at the front of the queue. */
   dequeue(): any {
     return this.collection.shift()[0];
   }
 
-  /** Return the number of elements in the queue. */
+  /** Returns the number of elements in the queue. */
   size(): number {
     return this.collection.length;
   }
 
-  /** Return whether or not the queue is currently empty. */
+  /** Returns whether or not the queue is currently empty. */
   isEmpty(): boolean {
     return this.collection.length === 0;
   }
 
-  /** Clear the contents of the queue. */
+  /** Clears the contents of the queue. */
   clear(): void {
     this.collection = [];
   }
 
   /**
-   * Print the priority queue to the console as an array of [element, priority]
+   * Prints the priority queue to the console as an array of [element, priority]
    * tuples, ordered from front to end.
    */
   print(): void {

@@ -18,7 +18,7 @@ class HashTable:
 
     def add(self, key, value):
         """
-        Add a key-value pair to the table. Assigning values via `table[key] = value` is
+        Adds a key-value pair to the table. Assigning values via `table[key] = value` is
         identical to this method.
         """
         index = self._hash(key)
@@ -28,8 +28,8 @@ class HashTable:
 
     def remove(self, key):
         """
-        Given a key, remove its key-value pair from the table (if present). Calling `del
-        table[key]` is identical to this method.
+        Given a key, removes its key-value pair from the table (if present). Calling
+        `del table[key]` is identical to this method.
         """
         index = self._hash(key)
         try:
@@ -43,7 +43,7 @@ class HashTable:
 
     def lookup(self, key):
         """
-        Return a given key's associated value (or `None` if the key is not present in
+        Returns a given key's associated value (or `None` if the key is not present in
         the table). Calling `table[key]` is identical to this method.
         """
         index = self._hash(key)
@@ -52,5 +52,5 @@ class HashTable:
     __getitem__ = lookup
 
     def clear(self):
-        """Clear the contents of the table."""
+        """Clears the contents of the table."""
         self.collection = {}

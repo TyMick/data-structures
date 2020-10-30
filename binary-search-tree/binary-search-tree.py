@@ -29,7 +29,7 @@ class BinarySearchTree:
 
     def add(self, value):
         """
-        Add a value to the tree.
+        Adds a value to the tree.
 
         :param value: The value you wish to add.
         :type value: integer or float
@@ -45,7 +45,7 @@ class BinarySearchTree:
                         # Recurse
                         return add_to(node.left, new_value)
                     else:
-                        # Add new value
+                        # Adds new value
                         node.left = Node(new_value)
                         return True
 
@@ -54,7 +54,7 @@ class BinarySearchTree:
                         # Recurse
                         return add_to(node.right, new_value)
                     else:
-                        # Add new value
+                        # Adds new value
                         node.right = Node(new_value)
                         return True
 
@@ -65,14 +65,14 @@ class BinarySearchTree:
             return add_to(self.root, value)
 
         else:
-            # Add new value as root
+            # Adds new value as root
             self.root = Node(value)
             return True
 
     def remove(self, value):
         """
-        Remove a given value from the tree, maintaining binary tree structure (or return
-        `None` if the value is not present).
+        Removes a given value from the tree, maintaining binary tree structure (or
+        returns `None` if the value is not present).
         """
 
         if self.root is None:
@@ -96,7 +96,7 @@ class BinarySearchTree:
         # Case 1: target has no children
         if num_children == 0:
             if parent:
-                # Remove parent reference
+                # Removes parent reference
                 if target == parent.left:
                     parent.left = None
                 else:
@@ -128,7 +128,7 @@ class BinarySearchTree:
 
             if leaf_parent:
                 # Replacement is a leaf
-                # Remove parent reference
+                # Removes parent reference
                 leaf_parent.left = None
 
                 # Link replacement to target children
@@ -149,7 +149,7 @@ class BinarySearchTree:
 
     def contains(self, value):
         """
-        Return whether or not the given value is present in the tree. Using the `in`
+        Returns whether or not the given value is present in the tree. Using the `in`
         keyword (e.g., `value in tree`) is identical to this method.
         """
 
@@ -171,12 +171,12 @@ class BinarySearchTree:
     __contains__ = contains
 
     def clear(self):
-        """Clear the contents of the tree."""
+        """Clears the contents of the tree."""
         self.root = None
         self.mode = "left-to-right"
 
     def find_min(self):
-        """Return the minimum value in the tree (or `None` if the tree is empty)."""
+        """Returns the minimum value in the tree (or `None` if the tree is empty)."""
 
         if self.root:
             # Find leftmost node
@@ -190,7 +190,7 @@ class BinarySearchTree:
             return None
 
     def find_max(self):
-        """Return the maximum value in the tree (or `None` if the tree is empty)."""
+        """Returns the maximum value in the tree (or `None` if the tree is empty)."""
 
         if self.root:
             # Find rightmost node
@@ -205,8 +205,8 @@ class BinarySearchTree:
 
     def find_max_height(self):
         """
-        Return the distance from the root node to the farthest leaf node (or `-1` if the
-        tree is empty).
+        Returns the distance from the root node to the farthest leaf node (or `-1` if
+        the tree is empty).
         """
 
         if self.root:
@@ -234,7 +234,7 @@ class BinarySearchTree:
 
     def find_min_height(self):
         """
-        Return the distance from the root node to the nearest leaf node (or `-1` if the
+        Returns the distance from the root node to the nearest leaf node (or `-1` if the
         tree is empty).
         """
 
@@ -266,7 +266,7 @@ class BinarySearchTree:
 
     def is_balanced(self):
         """
-        Return whether or not the tree is balanced (if its minimum height and maximum
+        Returns whether or not the tree is balanced (if its minimum height and maximum
         height differ by at most 1).
         """
 
@@ -305,7 +305,7 @@ class BinarySearchTree:
 
     def inorder(self):
         """
-        Return an array of all values in the tree arranged in the sequence of an in-
+        Returns an array of all values in the tree arranged in the sequence of an in-
         order depth-first traversal of the tree (or `None` if the tree is empty).
         """
 
@@ -313,11 +313,11 @@ class BinarySearchTree:
 
         def add_values_from(node):
             if node:
-                # Add left values
+                # Adds left values
                 add_values_from(node.left)
-                # Add self.node's value
+                # Adds self.node's value
                 values.append(node.value)
-                # Add right values
+                # Adds right values
                 add_values_from(node.right)
 
         add_values_from(self.root)
@@ -326,7 +326,7 @@ class BinarySearchTree:
 
     def preorder(self):
         """
-        Return an array of all values in the tree arranged in the sequence of a pre-
+        Returns an array of all values in the tree arranged in the sequence of a pre-
         order depth-first traversal of the tree (or `None` if the tree is empty).
         """
 
@@ -334,11 +334,11 @@ class BinarySearchTree:
 
         def add_values_from(node):
             if node:
-                # Add self.node's value
+                # Adds self.node's value
                 values.append(node.value)
-                # Add left values
+                # Adds left values
                 add_values_from(node.left)
-                # Add right values
+                # Adds right values
                 add_values_from(node.right)
 
         add_values_from(self.root)
@@ -347,7 +347,7 @@ class BinarySearchTree:
 
     def postorder(self):
         """
-        Return an array of all values in the tree arranged in the sequence of a post-
+        Returns an array of all values in the tree arranged in the sequence of a post-
         order depth-first traversal of the tree (or `None` if the tree is empty).
         """
 
@@ -355,11 +355,11 @@ class BinarySearchTree:
 
         def add_values_from(node):
             if node:
-                # Add left values
+                # Adds left values
                 add_values_from(node.left)
-                # Add right values
+                # Adds right values
                 add_values_from(node.right)
-                # Add self.node's value
+                # Adds self.node's value
                 values.append(node.value)
 
         add_values_from(self.root)
@@ -368,8 +368,8 @@ class BinarySearchTree:
 
     def level_order(self):
         """
-        Return an array of all values in the tree arranged in the sequence of a left-to-
-        right breadth-first traversal of the tree (or `None` if the tree is empty).
+        Returns an array of all values in the tree arranged in the sequence of a left-
+        to-right breadth-first traversal of the tree (or `None` if the tree is empty).
         """
 
         if self.root:
@@ -379,10 +379,10 @@ class BinarySearchTree:
             while queue:
                 current_node = queue.pop(0)
 
-                # Add current value
+                # Adds current value
                 values.append(current_node.value)
 
-                # Add children to queue
+                # Adds children to queue
                 if current_node.left:
                     queue.append(current_node.left)
                 if current_node.right:
@@ -395,7 +395,7 @@ class BinarySearchTree:
 
     def reverse_level_order(self):
         """
-        Return an array of all values in the tree arranged in the sequence of a right-
+        Returns an array of all values in the tree arranged in the sequence of a right-
         to-left breadth-first traversal of the tree (or `None` if the tree is empty).
         """
 
@@ -406,10 +406,10 @@ class BinarySearchTree:
             while queue:
                 current_node = queue.pop(0)
 
-                # Add current value
+                # Adds current value
                 values.append(current_node.value)
 
-                # Add children to queue
+                # Adds children to queue
                 if current_node.right:
                     queue.append(current_node.right)
                 if current_node.left:
@@ -422,7 +422,7 @@ class BinarySearchTree:
 
     def invert(self):
         """
-        Invert the tree in-place in linear time, transforming it into its mirror image,
+        Inverts the tree in-place in linear time, transforming it into its mirror image,
         such that an in-order traversal of self.inverted tree will visit nodes in the
         reverse order of an in-order traversal of the original tree.
         """
@@ -446,9 +446,9 @@ class BinarySearchTree:
     @staticmethod
     def is_binary_search_tree(tree: any, mode="left-to-right"):
         """
-        Check if the passed argument is a properly structured binary search tree (that uses
-        "root", "left", "right", and "value" properties) without just checking if it's an
-        instance of the `BinarySearchTree` class.
+        Checks if the passed argument is a properly structured binary search tree (that
+        uses "root", "left", "right", and "value" properties) without just checking if
+        it's an instance of the `BinarySearchTree` class.
         """
 
         if hasattr(tree, "root"):

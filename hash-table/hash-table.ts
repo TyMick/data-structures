@@ -16,7 +16,7 @@ export default class HashTable {
     return hashed;
   }
 
-  /** Add a key-value pair to the table. */
+  /** Adds a key-value pair to the table. */
   add(key: string, value: any): void {
     const index = this.hash(key);
     if (this.collection[index] === undefined) {
@@ -25,7 +25,7 @@ export default class HashTable {
     this.collection[index][key] = value;
   }
 
-  /** Given a key, remove its key-value pair from the table (if present). */
+  /** Given a key, removes its key-value pair from the table (if present). */
   remove(key: string): void {
     const index = this.hash(key);
     try {
@@ -38,7 +38,7 @@ export default class HashTable {
   }
 
   /**
-   * Return a given key's associated value (or `null` if the key is not present
+   * Returns a given key's associated value (or `null` if the key is not present
    * in the table).
    */
   lookup(key: string): any {
@@ -50,7 +50,7 @@ export default class HashTable {
     }
   }
 
-  /** Clear the contents of the table. */
+  /** Clears the contents of the table. */
   clear(): void {
     this.collection = {};
   }

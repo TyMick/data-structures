@@ -9,7 +9,7 @@
 export class MaxHeap {
   heap: number[] = [null];
 
-  /** Add a value to the collection, maintaining the heap property. */
+  /** Adds a value to the collection, maintaining the heap property. */
   insert(val: number): void {
     this.heap.push(val);
 
@@ -27,8 +27,8 @@ export class MaxHeap {
   }
 
   /**
-   * Remove and return the greatest value in the collection, then reorder it to
-   * maintain the heap property.
+   * Removes and returns the greatest value in the collection, then reorders it
+   * to maintain the heap property.
    */
   remove(): number {
     if (this.heap.length === 1) return null;
@@ -72,7 +72,7 @@ export class MaxHeap {
   }
 
   /**
-   * Return an array of all values currently in the heap (in the order of the
+   * Returns an array of all values currently in the heap (in the order of the
    * internal data structure).
    */
   print(): number[] {
@@ -80,7 +80,7 @@ export class MaxHeap {
   }
 
   /**
-   * Return an array of all values in the heap ordered from greatest to least.
+   * Returns an array of all values in the heap ordered from greatest to least.
    */
   sort(): number[] {
     let clone = [...this.heap];

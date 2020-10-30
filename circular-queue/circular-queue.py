@@ -17,7 +17,7 @@ class CircularQueue:
 
     def enqueue(self, element):
         """
-        Add an element to the buffer if the buffer is not already full.
+        Adds an element to the buffer if the buffer is not already full.
 
         :param element: The element you wish to add.
         :returns: The element itself if it was added, or `None` if the buffer was full.
@@ -33,7 +33,7 @@ class CircularQueue:
 
     def dequeue(self):
         """
-        Remove an element from the buffer if the buffer is not already empty.
+        Removes an element from the buffer if the buffer is not already empty.
 
         :returns: The element removed (or `None` if the buffer was empty).
         """
@@ -48,13 +48,13 @@ class CircularQueue:
             return item
 
     def clear(self):
-        """Clear the contents of the queue."""
+        """Clears the contents of the queue."""
         self.queue = [None for i in range(self.size)]
         self.read_pos = self.write_pos = 0
 
     def print(self):
         """
-        Print the queue to the console as a list, starting with the element that will be
-        read next.
+        Prints the queue to the console as a list, starting with the element that will
+        be read next.
         """
         return self.queue[self.read_pos :] + self.queue[: self.read_pos]

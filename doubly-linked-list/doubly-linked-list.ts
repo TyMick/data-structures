@@ -17,7 +17,7 @@ export default class DoublyLinkedList {
   head: Node = null;
   tail: Node = null;
 
-  /** Add an element to the tail end of the list. */
+  /** Adds an element to the tail end of the list. */
   add(element: any): void {
     if (this.tail) {
       this.tail.next = new Node(element, this.tail);
@@ -29,18 +29,18 @@ export default class DoublyLinkedList {
   }
 
   /**
-   * Remove all ocurrences of the given element from the list (or return `null`
-   * if the element is not present).
+   * Removes all ocurrences of the given element from the list (or returns
+   * `null` if the element is not present).
    */
   remove(element: any): void | null {
     if (this.head) {
-      // Remove as many heads as necessary
+      // Removes as many heads as necessary
       while (this.head.data === element) {
         this.head = this.head.next;
         this.head.prev = null;
       }
 
-      // Remove as many tails as necessary
+      // Removes as many tails as necessary
       while (this.tail.data === element) {
         this.tail = this.tail.prev;
         this.tail.next = null;
@@ -61,13 +61,13 @@ export default class DoublyLinkedList {
     }
   }
 
-  /** Clear the contents of the list. */
+  /** Clears the contents of the list. */
   clear(): void {
     this.head = null;
     this.tail = null;
   }
 
-  /** Reverse the list in place (or return `null` if the list is empty). */
+  /** Reverses the list in place (or returns `null` if the list is empty). */
   reverse(): void | null {
     if (this.head) {
       this.head = this.tail;

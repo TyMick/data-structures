@@ -9,7 +9,7 @@
 export class MinHeap {
   heap: number[] = [null];
 
-  /** Add a value to the collection, maintaining the heap property. */
+  /** Adds a value to the collection, maintaining the heap property. */
   insert(val: number): void {
     this.heap.push(val);
 
@@ -27,7 +27,7 @@ export class MinHeap {
   }
 
   /**
-   * Remove and return the least value in the collection, then reorder it to
+   * Removes and returns the least value in the collection, then reorders it to
    * maintain the heap property.
    */
   remove(): number {
@@ -72,7 +72,7 @@ export class MinHeap {
   }
 
   /**
-   * Return an array of all values currently in the heap (in the order of the
+   * Returns an array of all values currently in the heap (in the order of the
    * internal data structure).
    */
   print(): number[] {
@@ -80,7 +80,7 @@ export class MinHeap {
   }
 
   /**
-   * Return an array of all values in the heap ordered from least to greatest.
+   * Returns an array of all values in the heap ordered from least to greatest.
    */
   sort(): number[] {
     let clone = [...this.heap];

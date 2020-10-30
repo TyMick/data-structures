@@ -16,7 +16,7 @@ class DoublyLinkedList:
         self.tail = None
 
     def add(self, element):
-        """Add an element to the tail end of the list."""
+        """Adds an element to the tail end of the list."""
         if self.tail:
             self.tail.next = Node(element, prev=self.tail)
             self.tail = self.tail.next
@@ -25,7 +25,7 @@ class DoublyLinkedList:
             self.tail = self.head
 
     def remove(self, element):
-        """Remove all ocurrences of the given element from the list."""
+        """Removes all ocurrences of the given element from the list."""
         if self.head:
             # Remove as many heads as necessary
             while self.head.data == element:
@@ -50,11 +50,11 @@ class DoublyLinkedList:
             return None
 
     def clear(self):
-        """Clear the contents of the list."""
+        """Clears the contents of the list."""
         self.head = self.tail = None
 
     def reverse(self):
-        """Reverse the list in place (or return `None` if the list is empty)."""
+        """Reverses the list in place (or returns `None` if the list is empty)."""
         if self.head:
             self.head = self.tail
             current_node = self.head

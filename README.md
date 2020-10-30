@@ -1,12 +1,13 @@
-# 12 Common Data Structures in TypeScript and Python
+# 12 Common Data Structures in C, TypeScript, and Python
 
-I first wrote the backbone for these data structure implementations in JavaScript while completing freeCodeCamp's [Coding Interview Data Structure Challenges](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/). Since then I've ported my JavaScript code to both TypeScript and Python and added a few additional features.
+I first wrote the backbone for these data structure implementations in JavaScript while completing freeCodeCamp's [Coding Interview Data Structure Challenges](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/). Since then, I've ported my JavaScript code to TypeScript, Python, and C, and added a few additional features.
 
 Please enjoy, and [let me know](https://tymick.me/connect "Connect – Ty Mick") if you have any questions!
 
 ## Table of Contents
 
  1. [Stack](https://en.wikipedia.org/wiki/Stack_%28abstract_data_type%29)
+    - [`stack.c`](/stack/stack.c)
     - [`stack.ts`](/stack/stack.ts)
     - [`stack.py`](/stack/stack.py)
  2. [Queue](https://en.wikipedia.org/wiki/Queue_%28abstract_data_type%29)

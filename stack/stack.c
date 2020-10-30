@@ -71,7 +71,10 @@ int *pop(Stack *stack) {
     return NULL;
   }
 
-  return &stack->array[stack->top--];
+  int popped = stack->array[stack->top--];
+
+  int *ptr = &popped;
+  return ptr;
 }
 
 /** Clears the contents of a stack. */
@@ -88,7 +91,6 @@ void print(Stack *stack) {
       printf(", %d", stack->array[i]);
     }
   }
-
   printf("\n");
 }
 

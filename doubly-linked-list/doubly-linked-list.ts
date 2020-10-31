@@ -29,7 +29,7 @@ export default class DoublyLinkedList {
   }
 
   /**
-   * Removes all ocurrences of the given element from the list (or returns
+   * Removes all occurrences of the given element from the list (or returns
    * `null` if the element is not present).
    */
   remove(element: any): void | null {

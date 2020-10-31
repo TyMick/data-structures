@@ -25,7 +25,7 @@ class DoublyLinkedList:
             self.tail = self.head
 
     def remove(self, element):
-        """Removes all ocurrences of the given element from the list."""
+        """Removes all occurrences of the given element from the list."""
         if self.head:
             # Remove as many heads as necessary
             while self.head.data == element:

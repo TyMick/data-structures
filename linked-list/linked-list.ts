@@ -49,6 +49,7 @@ export default class LinkedList {
             this.length--;
             break;
           }
+          previousNode = currentNode;
           currentNode = currentNode.next;
         }
       }

@@ -43,6 +43,7 @@ class LinkedList:
                         previous_node.next = current_node.next
                         self.length -= 1
                         break
+                    previous_node = current_node
                     current_node = current_node.next
 
     def size(self):

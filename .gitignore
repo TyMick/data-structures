@@ -1,3 +1,4 @@
 .ropeproject/
 js/
 *.out
+scratch*

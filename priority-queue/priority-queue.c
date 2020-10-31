@@ -152,6 +152,7 @@ int main() {
   assert(front(q) == NULL);
 
   printf("All tests passed successfully.\n");
+  free(q);
 
   return 0;
 }

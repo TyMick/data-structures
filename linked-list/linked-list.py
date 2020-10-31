@@ -148,7 +148,7 @@ class LinkedList:
                 current_node = current_node.next
                 current_index += 1
 
-            # Adds and link up
+            # Add and link up
             new_node = Node(element)
             new_node.next = current_node
             previous_node.next = new_node

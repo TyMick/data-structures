@@ -159,7 +159,7 @@ export default class LinkedList {
         currentIndex++;
       }
 
-      // Adds and link up
+      // Add and link up
       let newNode = new Node(element);
       newNode.next = currentNode;
       previousNode.next = newNode;

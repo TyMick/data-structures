@@ -133,6 +133,7 @@ int main() {
   assert(isEmpty(q));
 
   printf("All tests passed successfully.\n");
+  free(q);
 
   return 0;
 }

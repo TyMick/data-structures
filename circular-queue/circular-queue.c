@@ -128,6 +128,7 @@ int main() {
   assert(*dequeue(q) == 1);
 
   printf("All tests passed successfully.\n");
+  free(q);
 
   return 0;
 }

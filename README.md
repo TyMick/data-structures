@@ -35,6 +35,7 @@ Please enjoy, and [let me know](https://tymick.me/connect "Connect – Ty Mick")
     - [`hash-table.ts`](/hash-table/hash-table.ts)
     - [`hash-table.py`](/hash-table/hash-table.py)
  8. [Set](https://en.wikipedia.org/wiki/Set_%28abstract_data_type%29)
+    - [`set.c`](/set/set.c)
     - [`set.ts`](/set/set.ts)
     - _Python has had a built-in set type [since 2004](https://www.python.org/downloads/release/python-240/ "Python Release 2.4.0")._
  9. [Binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)

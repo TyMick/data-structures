@@ -50,6 +50,12 @@ static int hash(char *string, int size) {
   return hashed % size;
 }
 
+/** Returns the number of items in a set. */
+int size(Set *set) { return set->length; }
+
+/** Returns whether or not a set is empty. */
+bool isEmpty(Set *set) { return size(set) == 0; }
+
 /**
  * Adds a value to a set (if it is not already present).
  *
@@ -80,11 +86,13 @@ int add(Set *set, char *value) {
 
     // Add new value item
     currentItem->next = newItem(value);
-    return 0;
   } else {
+    // Add new value item
     set->array[index] = newItem(value);
-    return 0;
   }
+
+  set->length++;
+  return 0;
 }
 
 /** Checks for the presence of a given value in a set. */
@@ -123,6 +131,7 @@ int del(Set *set, char *value) {
     Item *deletedItem = set->array[index];
 
     set->array[index] = set->array[index]->next;
+    set->length--;
 
     free(deletedItem);
 
@@ -135,6 +144,7 @@ int del(Set *set, char *value) {
   while (currentItem) {
     if (strcmp(currentItem->value, value) == 0) {
       previousItem->next = currentItem->next;
+      set->length--;
 
       free(currentItem);
 
@@ -161,6 +171,8 @@ void clear(Set *set) {
 
     set->array[i] = NULL;
   }
+
+  set->length = 0;
 }
 
 /**
@@ -193,6 +205,8 @@ void print(Set *set) {
 int main() {
   Set *s = newSet(100);
 
+  assert(isEmpty(s));
+  assert(size(s) == 0);
   assert(del(s, "things") == 1);
   print(s);
 
@@ -204,6 +218,8 @@ int main() {
 
   add(s, "legs");
   assert(has(s, "legs"));
+  assert(!isEmpty(s));
+  assert(size(s) == 2);
   print(s);
 
   assert(!has(s, "eyes"));
@@ -216,6 +232,7 @@ int main() {
   assert(del(s, "tails") == 1);
 
   clear(s);
+  assert(isEmpty(s));
   assert(!has(s, "legs"));
   print(s);
 

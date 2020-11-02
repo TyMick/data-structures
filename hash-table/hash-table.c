@@ -30,6 +30,7 @@ Item *newItem(char *key, int value) {
 typedef struct HashTable {
   int numBuckets;
   Item **array;
+  int length;
 } HashTable;
 
 HashTable *newHashTable(int numBuckets) {
@@ -37,6 +38,7 @@ HashTable *newHashTable(int numBuckets) {
 
   ptr->numBuckets = numBuckets;
   ptr->array = calloc(numBuckets, sizeof(Item *));
+  ptr->length = 0;
 
   return ptr;
 }
@@ -48,6 +50,12 @@ static int hash(char *string, int size) {
   }
   return hashed % size;
 }
+
+/** Returns the number of items in a hash table. */
+int size(HashTable *table) { return table->length; }
+
+/** Returns whether or not a hash table is empty. */
+bool isEmpty(HashTable *table) { return size(table) == 0; }
 
 /**
  * Adds a key-value pair to a hash table, overwriting a matching key if one is
@@ -69,13 +77,16 @@ void set(HashTable *table, char *key, int value) {
       if (!currentItem->next) {
         // Add new key-value item
         currentItem->next = newItem(key, value);
+        table->length++;
         break;
       }
 
       currentItem = currentItem->next;
     }
   } else {
+    // Add new key-value item
     table->array[index] = newItem(key, value);
+    table->length++;
   }
 }
 
@@ -104,6 +115,24 @@ int *get(HashTable *table, char *key) {
   return NULL;
 }
 
+/** Checks whether or not a hash table contains a given key. */
+bool has(HashTable *table, char *key) {
+  int index = hash(key, table->numBuckets);
+
+  Item *currentItem = table->array[index];
+
+  while (currentItem) {
+    if (strcmp(currentItem->key, key) == 0) {
+      return true;
+    }
+
+    currentItem = currentItem->next;
+  }
+
+  // Key was not found
+  return false;
+}
+
 /**
  * Given a key, removes its key-value pair from a hash table (if present).
  *
@@ -122,6 +151,7 @@ int del(HashTable *table, char *key) {
     Item *deletedItem = table->array[index];
 
     table->array[index] = table->array[index]->next;
+    table->length--;
 
     free(deletedItem);
 
@@ -134,6 +164,7 @@ int del(HashTable *table, char *key) {
   while (currentItem) {
     if (strcmp(currentItem->key, key) == 0) {
       previousItem->next = currentItem->next;
+      table->length--;
 
       free(currentItem);
 
@@ -160,6 +191,26 @@ void clear(HashTable *table) {
 
     table->array[i] = NULL;
   }
+
+  table->length = 0;
+}
+
+/** Returns a pointer to an array of all values in a hash table. */
+int *values(HashTable *table) {
+  int *valuesArray = malloc(table->length * sizeof(int));
+
+  int vIndex = 0;
+  for (int i = 0; i < table->numBuckets; i++) {
+    Item *currentItem = table->array[i];
+
+    while (currentItem) {
+      valuesArray[vIndex++] = currentItem->value;
+
+      currentItem = currentItem->next;
+    }
+  }
+
+  return valuesArray;
 }
 
 /**
@@ -192,7 +243,10 @@ void print(HashTable *table) {
 int main() {
   HashTable *t = newHashTable(100);
 
+  assert(isEmpty(t));
+  assert(size(t) == 0);
   assert(del(t, "things") == 1);
+  assert(!has(t, "stuff"));
   print(t);
 
   set(t, "legs", 4);
@@ -203,7 +257,14 @@ int main() {
 
   set(t, "legs", 6);
   assert(*get(t, "legs") == 6);
+  assert(has(t, "legs"));
+  assert(!isEmpty(t));
+  assert(size(t) == 2);
   print(t);
+
+  int *v = values(t);
+  assert((v[0] == 6 && v[1] == 1) || (v[0] == 1 && v[1] == 6));
+  free(v);
 
   assert(get(t, "eyes") == NULL);
 
@@ -215,7 +276,9 @@ int main() {
   assert(del(t, "tails") == 1);
 
   clear(t);
+  assert(isEmpty(t));
   assert(get(t, "legs") == NULL);
+  assert(!has(t, "legs"));
   print(t);
 
   free(t);

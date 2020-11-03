@@ -2,7 +2,7 @@
 
 I first wrote the backbone for these data structure implementations in JavaScript while completing freeCodeCamp's [Coding Interview Data Structure Challenges](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/). Since then, I've ported my JavaScript code to TypeScript (limited to ES5 libraries), Python, and C, and added a few additional features.
 
-I found C to be the most fun (and certainly the most educational) language to build these in. I also wrote custom (but informal) tests for my C implementations in the `main` function of each file.
+I've found C to be the most fun (and certainly the most educational) language to build these in. I also wrote custom (but informal) tests for my C implementations in the `main` function of each file.
 
 Please enjoy, and [let me know](https://tymick.me/connect "Connect – Ty Mick") if you have any questions!
 

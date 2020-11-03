@@ -109,6 +109,12 @@ char *dequeue(PriorityQueue *queue) {
 /** Clears the contents of a priority queue. */
 void clear(PriorityQueue *queue) { queue->end = -1; }
 
+/** Frees the allocated memory for a priority queue and its internal array. */
+void destroy(PriorityQueue *queue) {
+  free(queue->array);
+  free(queue);
+}
+
 /**
  * Prints a priority queue to the console as comma-separated [element, priority]
  * tuples, ordered from front to end.
@@ -152,7 +158,7 @@ int main() {
   assert(front(q) == NULL);
 
   printf("All tests passed successfully.\n");
-  free(q);
+  destroy(q);
 
   return 0;
 }

@@ -19,7 +19,7 @@ Node *newNode(char *element) {
 }
 
 /*
- * A linked list data structure, where each node in thi list will contain a
+ * A linked list data structure, where each node in the list will contain a
  * reference to the node after it.
  */
 typedef struct LinkedList {
@@ -274,6 +274,12 @@ void clear(LinkedList *list) {
   list->length = 0;
 }
 
+/** Frees the allocated memory for a linked list and its contents. */
+void destroy(LinkedList *list) {
+  clear(list);
+  free(list);
+}
+
 /** Prints the contents of a linked list to a console, separated by commas. */
 void print(LinkedList *list) {
   if (!isEmpty(list)) {
@@ -318,7 +324,7 @@ int main() {
   assert(isEmpty(l));
 
   printf("All tests passed successfully.\n");
-  free(l);
+  destroy(l);
 
   return 0;
 }

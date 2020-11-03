@@ -176,6 +176,15 @@ void clear(Set *set) {
 }
 
 /**
+ * Frees the allocated memory for a set, its internal array, and its contents.
+ */
+void destroy(Set *set) {
+  clear(set);
+  free(set->array);
+  free(set);
+}
+
+/**
  * Prints the contents of a set to the console (in an arbitrary order determined
  * by internal structure, not by values or insertion order).
  */
@@ -236,6 +245,6 @@ int main() {
   assert(!has(s, "legs"));
   print(s);
 
-  free(s);
+  destroy(s);
   return 0;
 }

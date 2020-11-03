@@ -83,6 +83,12 @@ void clear(CircularQueue *queue) {
   queue->writePos = 0;
 }
 
+/** Frees the allocated memory for a circular queue and its internal array. */
+void destroy(CircularQueue *queue) {
+  free(queue->array);
+  free(queue);
+}
+
 /**
  * Prints the contents of a circular queue to the console as comma-separated
  * values, in read order.
@@ -128,7 +134,7 @@ int main() {
   assert(*dequeue(q) == 1);
 
   printf("All tests passed successfully.\n");
-  free(q);
+  destroy(q);
 
   return 0;
 }

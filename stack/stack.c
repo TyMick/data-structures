@@ -80,6 +80,12 @@ int *pop(Stack *stack) {
 /** Clears the contents of a stack. */
 void clear(Stack *stack) { stack->top = -1; }
 
+/** Frees the allocated memory for a stack and its internal array. */
+void destroy(Stack *stack) {
+  free(stack->array);
+  free(stack);
+}
+
 /**
  * Prints a stack to the console as comma-separated values ordered from bottom
  * to top.
@@ -133,7 +139,7 @@ int main() {
   assert(isEmpty(s));
 
   printf("All tests passed successfully.\n");
-  free(s);
+  destroy(s);
 
   return 0;
 }

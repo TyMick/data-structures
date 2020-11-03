@@ -120,6 +120,12 @@ void clear(DoublyLinkedList *list) {
   list->tail = NULL;
 }
 
+/** Frees the allocated memory for a doubly-linked list and its contents. */
+void destroy(DoublyLinkedList *list) {
+  clear(list);
+  free(list);
+}
+
 /** Reverses a doubly-linked list in place. */
 void reverse(DoublyLinkedList *list) {
   if (isEmpty(list))
@@ -192,7 +198,7 @@ int main() {
   assert(l->tail == NULL);
 
   printf("All tests passed successfully.\n");
-  free(l);
+  destroy(l);
 
   return 0;
 }

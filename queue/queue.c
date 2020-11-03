@@ -90,6 +90,12 @@ int *dequeue(Queue *queue) {
 /** Clears the contents of a queue. */
 void clear(Queue *queue) { queue->end = -1; }
 
+/** Frees the allocated memory for a queue and its internal array. */
+void destroy(Queue *queue) {
+  free(queue->array);
+  free(queue);
+}
+
 /**
  * Prints a queue to the console as comma-separated values ordered from front to
  * end.
@@ -133,7 +139,7 @@ int main() {
   assert(isEmpty(q));
 
   printf("All tests passed successfully.\n");
-  free(q);
+  destroy(q);
 
   return 0;
 }

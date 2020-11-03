@@ -195,6 +195,16 @@ void clear(HashTable *table) {
   table->length = 0;
 }
 
+/**
+ * Frees the allocated memory for a hash table, its internal array, and its
+ * contents.
+ */
+void destroy(HashTable *table) {
+  clear(table);
+  free(table->array);
+  free(table);
+}
+
 /** Returns a pointer to an array of all values in a hash table. */
 int *values(HashTable *table) {
   int *valuesArray = malloc(table->length * sizeof(int));
@@ -281,6 +291,6 @@ int main() {
   assert(!has(t, "legs"));
   print(t);
 
-  free(t);
+  destroy(t);
   return 0;
 }

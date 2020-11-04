@@ -38,7 +38,7 @@ export default class BinarySearchTree {
             // Recurse
             return addTo(node.left, newValue);
           } else {
-            // Adds new value
+            // Add new value
             node.left = new Node(newValue);
             return true;
           }
@@ -47,7 +47,7 @@ export default class BinarySearchTree {
             // Recurse
             return addTo(node.right, newValue);
           } else {
-            // Adds new value
+            // Add new value
             node.right = new Node(newValue);
             return true;
           }
@@ -59,7 +59,7 @@ export default class BinarySearchTree {
 
       return addTo(this.root, value);
     } else {
-      // Adds new value as root
+      // Add new value as root
       this.root = new Node(value);
       return true;
     }
@@ -90,7 +90,7 @@ export default class BinarySearchTree {
     // Case 1: target has no children
     if (numChildren === 0) {
       if (parent) {
-        // Removes parent reference
+        // Remove parent reference
         if (target === parent.left) {
           parent.left = null;
         } else {
@@ -129,7 +129,7 @@ export default class BinarySearchTree {
 
       if (leafParent) {
         // Replacement is a leaf
-        // Removes parent reference
+        // Remove parent reference
         leafParent.left = null;
 
         // Link replacement to target children
@@ -184,8 +184,11 @@ export default class BinarySearchTree {
   findMin(): number | null {
     // Find leftmost node
     let currentNode: Node = this.root;
-    while (currentNode?.left) {
-      currentNode = currentNode.left;
+    while (
+      this.mode === "left-to-right" ? currentNode?.left : currentNode?.right
+    ) {
+      currentNode =
+        this.mode === "left-to-right" ? currentNode.left : currentNode.right;
     }
 
     return currentNode?.value ?? null;
@@ -195,8 +198,11 @@ export default class BinarySearchTree {
   findMax(): number | null {
     // Find rightmost node
     let currentNode: Node = this.root;
-    while (currentNode?.right) {
-      currentNode = currentNode.right;
+    while (
+      this.mode === "left-to-right" ? currentNode?.right : currentNode?.left
+    ) {
+      currentNode =
+        this.mode === "left-to-right" ? currentNode.right : currentNode.left;
     }
 
     return currentNode?.value ?? null;
@@ -312,11 +318,11 @@ export default class BinarySearchTree {
 
     (function addValuesFrom(node: Node): void {
       if (node) {
-        // Adds left values
+        // Add left values
         addValuesFrom(node.left);
-        // Adds this node's value
+        // Add this node's value
         values.push(node.value);
-        // Adds right values
+        // Add right values
         addValuesFrom(node.right);
       }
     })(this.root);
@@ -334,11 +340,11 @@ export default class BinarySearchTree {
 
     (function addValuesFrom(node: Node): void {
       if (node) {
-        // Adds this node's value
+        // Add this node's value
         values.push(node.value);
-        // Adds left values
+        // Add left values
         addValuesFrom(node.left);
-        // Adds right values
+        // Add right values
         addValuesFrom(node.right);
       }
     })(this.root);
@@ -356,11 +362,11 @@ export default class BinarySearchTree {
 
     (function addValuesFrom(node: Node): void {
       if (node) {
-        // Adds left values
+        // Add left values
         addValuesFrom(node.left);
-        // Adds right values
+        // Add right values
         addValuesFrom(node.right);
-        // Adds this node's value
+        // Add this node's value
         values.push(node.value);
       }
     })(this.root);
@@ -380,9 +386,9 @@ export default class BinarySearchTree {
 
       while (queue.length) {
         const currentNode = queue.shift();
-        // Adds current value
+        // Add current value
         values.push(currentNode.value);
-        // Adds children to queue
+        // Add children to queue
         if (currentNode.left) queue.push(currentNode.left);
         if (currentNode.right) queue.push(currentNode.right);
       }
@@ -405,9 +411,9 @@ export default class BinarySearchTree {
 
       while (queue.length) {
         const currentNode = queue.shift();
-        // Adds current value
+        // Add current value
         values.push(currentNode.value);
-        // Adds children to queue
+        // Add children to queue
         if (currentNode.right) queue.push(currentNode.right);
         if (currentNode.left) queue.push(currentNode.left);
       }
@@ -419,7 +425,7 @@ export default class BinarySearchTree {
   }
 
   /**
-   * Inverts  the tree in-place in linear time, transforming it into its mirror
+   * Inverts the tree in-place in linear time, transforming it into its mirror
    * image, such that an in-order traversal of this inverted tree will visit
    * nodes in the reverse order of an in-order traversal of the original tree.
    */

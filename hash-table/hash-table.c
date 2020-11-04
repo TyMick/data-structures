@@ -205,7 +205,10 @@ void destroy(HashTable *table) {
   free(table);
 }
 
-/** Returns a pointer to an array of all values in a hash table. */
+/**
+ * Returns a pointer to an array of all values in a hash table. (Make sure to
+ * `free` the pointer when finished with the array.)
+ */
 int *values(HashTable *table) {
   int *valuesArray = malloc(table->length * sizeof(int));
 

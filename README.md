@@ -41,6 +41,7 @@ Please enjoy, and [let me know](https://tymick.me/connect "Connect – Ty Mick")
     - [`set.ts`](/set/set.ts)
     - _Python has had a built-in set type [since 2004](https://www.python.org/downloads/release/python-240/ "Python Release 2.4.0")._
  9. [Binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)
+    - [`binary-search-tree.c`](/binary-search-tree/binary-search-tree.c)
     - [`binary-search-tree.ts`](/binary-search-tree/binary-search-tree.ts)
     - [`binary-search-tree.py`](/binary-search-tree/binary-search-tree.py)
 10. [Trie search tree](https://en.wikipedia.org/wiki/Trie)

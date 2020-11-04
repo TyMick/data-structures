@@ -45,7 +45,7 @@ class BinarySearchTree:
                         # Recurse
                         return add_to(node.left, new_value)
                     else:
-                        # Adds new value
+                        # Add new value
                         node.left = Node(new_value)
                         return True
 
@@ -54,7 +54,7 @@ class BinarySearchTree:
                         # Recurse
                         return add_to(node.right, new_value)
                     else:
-                        # Adds new value
+                        # Add new value
                         node.right = Node(new_value)
                         return True
 
@@ -65,7 +65,7 @@ class BinarySearchTree:
             return add_to(self.root, value)
 
         else:
-            # Adds new value as root
+            # Add new value as root
             self.root = Node(value)
             return True
 
@@ -96,7 +96,7 @@ class BinarySearchTree:
         # Case 1: target has no children
         if num_children == 0:
             if parent:
-                # Removes parent reference
+                # Remove parent reference
                 if target == parent.left:
                     parent.left = None
                 else:
@@ -128,7 +128,7 @@ class BinarySearchTree:
 
             if leaf_parent:
                 # Replacement is a leaf
-                # Removes parent reference
+                # Remove parent reference
                 leaf_parent.left = None
 
                 # Link replacement to target children
@@ -181,8 +181,16 @@ class BinarySearchTree:
         if self.root:
             # Find leftmost node
             current_node = self.root
-            while current_node.left:
-                current_node = current_node.left
+            while (
+                current_node.left
+                if self.mode == "left-to-right"
+                else current_node.right
+            ):
+                current_node = (
+                    current_node.left
+                    if self.mode == "left-to-right"
+                    else current_node.right
+                )
 
             return current_node.value
 
@@ -195,8 +203,16 @@ class BinarySearchTree:
         if self.root:
             # Find rightmost node
             current_node = self.root
-            while current_node.right:
-                current_node = current_node.right
+            while (
+                current_node.right
+                if self.mode == "left-to-right"
+                else current_node.left
+            ):
+                current_node = (
+                    current_node.right
+                    if self.mode == "left-to-right"
+                    else current_node.left
+                )
 
             return current_node.value
 
@@ -313,11 +329,11 @@ class BinarySearchTree:
 
         def add_values_from(node):
             if node:
-                # Adds left values
+                # Add left values
                 add_values_from(node.left)
-                # Adds self.node's value
+                # Add self.node's value
                 values.append(node.value)
-                # Adds right values
+                # Add right values
                 add_values_from(node.right)
 
         add_values_from(self.root)
@@ -334,11 +350,11 @@ class BinarySearchTree:
 
         def add_values_from(node):
             if node:
-                # Adds self.node's value
+                # Add self.node's value
                 values.append(node.value)
-                # Adds left values
+                # Add left values
                 add_values_from(node.left)
-                # Adds right values
+                # Add right values
                 add_values_from(node.right)
 
         add_values_from(self.root)
@@ -355,11 +371,11 @@ class BinarySearchTree:
 
         def add_values_from(node):
             if node:
-                # Adds left values
+                # Add left values
                 add_values_from(node.left)
-                # Adds right values
+                # Add right values
                 add_values_from(node.right)
-                # Adds self.node's value
+                # Add self.node's value
                 values.append(node.value)
 
         add_values_from(self.root)
@@ -379,10 +395,10 @@ class BinarySearchTree:
             while queue:
                 current_node = queue.pop(0)
 
-                # Adds current value
+                # Add current value
                 values.append(current_node.value)
 
-                # Adds children to queue
+                # Add children to queue
                 if current_node.left:
                     queue.append(current_node.left)
                 if current_node.right:
@@ -406,10 +422,10 @@ class BinarySearchTree:
             while queue:
                 current_node = queue.pop(0)
 
-                # Adds current value
+                # Add current value
                 values.append(current_node.value)
 
-                # Adds children to queue
+                # Add children to queue
                 if current_node.right:
                     queue.append(current_node.right)
                 if current_node.left:

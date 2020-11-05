@@ -89,13 +89,13 @@ export class Trie {
 
     if (!collectNodesFrom(this.root, word)) return false;
 
-    // Removes endpoint from last node
+    // Remove endpoint from last node
     let [currentNode, nextLtr]: [Node, string] = wordNodes.pop();
     currentNode.end = false;
 
     let onSharedPath = Object.keys(currentNode.keys).length > 0;
 
-    // Removes nodes that aren't part of any other word
+    // Remove nodes that aren't part of any other word
     while (wordNodes.length && !onSharedPath) {
       [currentNode, nextLtr] = wordNodes.pop();
       delete currentNode.keys[nextLtr];

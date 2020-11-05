@@ -101,13 +101,13 @@ class Trie:
         if not collect_nodes_from(self.root, word):
             return False
 
-        # Removes endpoint from last node
+        # Remove endpoint from last node
         current_node, next_ltr = word_nodes.pop()
         current_node.end = False
 
         on_shared_path = len(current_node.keys) > 0
 
-        # Removes nodes that aren't part of any other word
+        # Remove nodes that aren't part of any other word
         while word_nodes and not on_shared_path:
             current_node, next_ltr = word_nodes.pop()
             del current_node.keys[next_ltr]

@@ -1,4 +1,4 @@
 .ropeproject/
 js/
-*.out
+*.out*
 scratch*

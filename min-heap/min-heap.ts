@@ -2,9 +2,9 @@
  * A binary min heap implemented as an implicit data structure. Keys are stored
  * as an array, and parent-child relationships are determined by relative
  * positions within the array: in a 1-indexed array, for an element at given
- * index `i`, its children will be located at `2i` and `2i + 1`, and its parent
- * will be located at `Math.floor(i / 2)`. All parent nodes are less than or
- * equal to their child nodes.
+ * index `i`, its children will be located at `2 * i` and `2 * i + 1`, and its
+ * parent will be located at `Math.floor(i / 2)`. All parent nodes are less than
+ * or equal to their child nodes.
  */
 export class MinHeap {
   heap: number[] = [null];

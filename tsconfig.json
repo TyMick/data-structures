@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "outDir": "js/",
     "sourceMap": true,
     "lib": ["es5", "webworker"],
     "strict": true,

@@ -1,15 +1,13 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "typescript",
-			"tsconfig": "tsconfig.json",
-			"option": "watch",
-			"problemMatcher": [
-				"$tsc-watch"
-			],
-			"group": "build",
-			"label": "TypeScript: watch"
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "C: build current file",
+      "type": "shell",
+      "command": "clang -g ${file} -o ${file}.out",
+      "presentation": {
+        "reveal": "never"
+      }
+    }
+  ]
 }

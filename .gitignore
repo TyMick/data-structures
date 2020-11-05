@@ -1,4 +1,5 @@
 .ropeproject/
-js/
-*.out*
+*.js
+*.js.map
+*.c.out*
 scratch*

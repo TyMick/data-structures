@@ -197,8 +197,8 @@ int main() {
   assert(isEmpty(l));
   assert(l->tail == NULL);
 
-  printf("All tests passed successfully.\n");
   destroy(l);
+  printf("All tests passed successfully.\n");
 
   return 0;
 }

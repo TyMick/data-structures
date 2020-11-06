@@ -6,15 +6,23 @@
 /** A queue data structure, which will have first-in-first-out functionality. */
 typedef struct Queue {
   int maxSize;
-  int *array;
   int end;
+  int array[];
 } Queue;
 
+/**
+ * Constructs a new instance of a queue and returns a pointer to it. (Make sure
+ * to `free` the pointer once you're finished with it.)
+ */
 Queue *newQueue(int maxSize) {
-  Queue *ptr = malloc(sizeof(Queue));
+  if (maxSize < 1) {
+    printf("Error: maximum size must be positive.\n");
+    return NULL;
+  }
+
+  Queue *ptr = malloc(sizeof(Queue) + maxSize * sizeof(int));
 
   ptr->maxSize = maxSize;
-  ptr->array = malloc(maxSize * sizeof(int));
   ptr->end = -1;
 
   return ptr;
@@ -90,12 +98,6 @@ int *dequeue(Queue *queue) {
 /** Clears the contents of a queue. */
 void clear(Queue *queue) { queue->end = -1; }
 
-/** Frees the allocated memory for a queue and its internal array. */
-void destroy(Queue *queue) {
-  free(queue->array);
-  free(queue);
-}
-
 /**
  * Prints a queue to the console as comma-separated values ordered from front to
  * end.
@@ -111,6 +113,8 @@ void print(Queue *queue) {
 }
 
 int main() {
+  assert(newQueue(0) == NULL);
+
   Queue *q = newQueue(5);
 
   print(q);
@@ -138,8 +142,8 @@ int main() {
   clear(q);
   assert(isEmpty(q));
 
+  free(q);
   printf("All tests passed successfully.\n");
-  destroy(q);
 
   return 0;
 }

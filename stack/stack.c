@@ -6,15 +6,23 @@
 /** A stack data structure, which will have last-in-first-out functionality. */
 typedef struct Stack {
   int maxSize;
-  int *array;
   int top;
+  int array[];
 } Stack;
 
+/**
+ * Constructs a new instance of a stack and returns a pointer to it. (Make sure
+ * to `free` the pointer once you're finished with it.)
+ */
 Stack *newStack(int maxSize) {
-  Stack *ptr = malloc(sizeof(Stack));
+  if (maxSize < 1) {
+    printf("Error: maximum size must be positive.\n");
+    return NULL;
+  }
+
+  Stack *ptr = malloc(sizeof(Stack) + maxSize * sizeof(int));
 
   ptr->maxSize = maxSize;
-  ptr->array = malloc(maxSize * sizeof(int));
   ptr->top = -1;
 
   return ptr;
@@ -80,12 +88,6 @@ int *pop(Stack *stack) {
 /** Clears the contents of a stack. */
 void clear(Stack *stack) { stack->top = -1; }
 
-/** Frees the allocated memory for a stack and its internal array. */
-void destroy(Stack *stack) {
-  free(stack->array);
-  free(stack);
-}
-
 /**
  * Prints a stack to the console as comma-separated values ordered from bottom
  * to top.
@@ -101,6 +103,8 @@ void print(Stack *stack) {
 }
 
 int main() {
+  assert(newStack(0) == NULL);
+
   Stack *s = newStack(5);
 
   print(s);
@@ -138,8 +142,8 @@ int main() {
   clear(s);
   assert(isEmpty(s));
 
+  free(s);
   printf("All tests passed successfully.\n");
-  destroy(s);
 
   return 0;
 }

@@ -29,16 +29,21 @@ static Item *newItem(char *key, int value) {
  */
 typedef struct HashTable {
   int numBuckets;
-  Item **array;
   int length;
+  Item **array;
 } HashTable;
 
 HashTable *newHashTable(int numBuckets) {
+  if (numBuckets < 1) {
+    printf("Error: number of buckets must be positive.\n");
+    return NULL;
+  }
+
   HashTable *ptr = malloc(sizeof(HashTable));
 
   ptr->numBuckets = numBuckets;
-  ptr->array = calloc(numBuckets, sizeof(Item *));
   ptr->length = 0;
+  ptr->array = calloc(numBuckets, sizeof(Item *));
 
   return ptr;
 }
@@ -254,6 +259,8 @@ void print(HashTable *table) {
 }
 
 int main() {
+  assert(newHashTable(0) == NULL);
+
   HashTable *t = newHashTable(100);
 
   assert(isEmpty(t));
@@ -295,5 +302,7 @@ int main() {
   print(t);
 
   destroy(t);
+  printf("All tests passed successfully.\n");
+
   return 0;
 }

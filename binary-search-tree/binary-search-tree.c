@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 typedef struct Node {
   int value;
@@ -687,5 +686,7 @@ int main() {
   free(v);
 
   destroy(t);
+  printf("All tests passed successfully.\n");
+
   return 0;
 }

@@ -55,7 +55,7 @@ bool isFull(MinHeap *heap) { return length(heap) == heap->maxSize; }
  */
 int push(MinHeap *heap, int value) {
   if (isFull(heap)) {
-    printf("Error: stack overflow: heap is already at maximum capacity\n");
+    printf("Error: stack overflow: heap is already at maximum capacity.\n");
     return 1;
   }
 
@@ -191,6 +191,8 @@ int *sort(MinHeap *heap) {
 }
 
 int main() {
+  assert(newMinHeap(0) == NULL);
+
   MinHeap *h = newMinHeap(10);
 
   assert(isEmpty(h));
@@ -242,6 +244,7 @@ int main() {
   assert(sort(h) == NULL);
 
   free(h);
+  printf("All tests passed successfully.\n");
 
   return 0;
 }

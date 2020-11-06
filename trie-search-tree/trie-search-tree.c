@@ -85,7 +85,7 @@ int add(Trie *trie, char *word) {
   do {
     if (!isLetter(*currentChar)) {
       printf(*currentChar ? "Error: word may only contain letters.\n"
-                          : "Error: word may not be empty.\n");
+                          : "Error: word must not be empty.\n");
       return 2;
     }
 
@@ -300,6 +300,8 @@ int main() {
 
   add(t, "uhtenohutna");
   destroy(t);
+
+  printf("All tests passed successfully.\n");
 
   return 0;
 }

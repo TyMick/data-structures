@@ -16,15 +16,24 @@ typedef struct QueueItem {
  */
 typedef struct PriorityQueue {
   int maxSize;
-  QueueItem *array;
   int end;
+  QueueItem array[];
 } PriorityQueue;
 
+/**
+ * Constructs a new instance of a priority queue and returns a pointer to it.
+ * (Make sure to `free` the pointer once you're finished with it.)
+ */
 PriorityQueue *newPriorityQueue(int maxSize) {
-  PriorityQueue *ptr = malloc(sizeof(PriorityQueue));
+  if (maxSize < 1) {
+    printf("Error: maximum size must be positive.\n");
+    return NULL;
+  }
+
+  PriorityQueue *ptr =
+      malloc(sizeof(PriorityQueue) + maxSize * sizeof(QueueItem));
 
   ptr->maxSize = maxSize;
-  ptr->array = malloc(maxSize * sizeof(QueueItem));
   ptr->end = -1;
 
   return ptr;
@@ -109,12 +118,6 @@ char *dequeue(PriorityQueue *queue) {
 /** Clears the contents of a priority queue. */
 void clear(PriorityQueue *queue) { queue->end = -1; }
 
-/** Frees the allocated memory for a priority queue and its internal array. */
-void destroy(PriorityQueue *queue) {
-  free(queue->array);
-  free(queue);
-}
-
 /**
  * Prints a priority queue to the console as comma-separated [element, priority]
  * tuples, ordered from front to end.
@@ -131,6 +134,8 @@ void print(PriorityQueue *queue) {
 }
 
 int main() {
+  assert(newPriorityQueue(0) == NULL);
+
   PriorityQueue *q = newPriorityQueue(5);
 
   print(q);
@@ -157,8 +162,8 @@ int main() {
   assert(isEmpty(q));
   assert(front(q) == NULL);
 
+  free(q);
   printf("All tests passed successfully.\n");
-  destroy(q);
 
   return 0;
 }

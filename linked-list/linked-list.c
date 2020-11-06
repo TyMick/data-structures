@@ -323,8 +323,8 @@ int main() {
   clear(l);
   assert(isEmpty(l));
 
-  printf("All tests passed successfully.\n");
   destroy(l);
+  printf("All tests passed successfully.\n");
 
   return 0;
 }

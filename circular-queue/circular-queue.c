@@ -9,16 +9,24 @@
  */
 typedef struct CircularQueue {
   int size;
-  int *array;
   int readPos; // Will be `-1` when the queue is empty
   int writePos;
+  int array[];
 } CircularQueue;
 
+/**
+ * Constructs a new instance of a circular queue and returns a pointer to it.
+ * (Make sure to `free` the pointer once you're finished with it.)
+ */
 CircularQueue *newCircularQueue(int bufferSize) {
-  CircularQueue *ptr = malloc(sizeof(CircularQueue));
+  if (bufferSize < 1) {
+    printf("Error: buffer size must be positive.\n");
+    return NULL;
+  }
+
+  CircularQueue *ptr = malloc(sizeof(CircularQueue) + bufferSize * sizeof(int));
 
   ptr->size = bufferSize;
-  ptr->array = malloc(bufferSize * sizeof(int));
   ptr->readPos = -1;
   ptr->writePos = 0;
 
@@ -83,12 +91,6 @@ void clear(CircularQueue *queue) {
   queue->writePos = 0;
 }
 
-/** Frees the allocated memory for a circular queue and its internal array. */
-void destroy(CircularQueue *queue) {
-  free(queue->array);
-  free(queue);
-}
-
 /**
  * Prints the contents of a circular queue to the console as comma-separated
  * values, in read order.
@@ -107,6 +109,8 @@ void print(CircularQueue *queue) {
 }
 
 int main() {
+  assert(newCircularQueue(0) == NULL);
+
   CircularQueue *q = newCircularQueue(5);
 
   print(q);
@@ -133,8 +137,8 @@ int main() {
   enqueue(q, 1);
   assert(*dequeue(q) == 1);
 
+  free(q);
   printf("All tests passed successfully.\n");
-  destroy(q);
 
   return 0;
 }

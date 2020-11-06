@@ -245,6 +245,7 @@ int main() {
   assert(sort(h) == NULL);
 
   free(h);
+  printf("All tests passed successfully.\n");
 
   return 0;
 }

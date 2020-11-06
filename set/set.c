@@ -9,7 +9,7 @@ typedef struct Item {
   struct Item *next;
 } Item;
 
-Item *newItem(char *value) {
+static Item *newItem(char *value) {
   Item *ptr = malloc(sizeof(Item));
 
   ptr->value = value;

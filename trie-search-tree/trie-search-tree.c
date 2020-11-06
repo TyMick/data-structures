@@ -11,7 +11,7 @@ typedef struct Node {
   bool end;
 } Node;
 
-Node *newNode() {
+static Node *newNode() {
   Node *ptr = malloc(sizeof(Node));
 
   for (int i = 0; i < ALPHABET_LENGTH; i++)

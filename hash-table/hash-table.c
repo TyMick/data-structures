@@ -10,7 +10,7 @@ typedef struct Item {
   struct Item *next;
 } Item;
 
-Item *newItem(char *key, int value) {
+static Item *newItem(char *key, int value) {
   Item *ptr = malloc(sizeof(Item));
 
   ptr->key = key;

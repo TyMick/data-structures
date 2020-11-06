@@ -10,7 +10,7 @@ typedef struct Node {
   struct Node *right;
 } Node;
 
-Node *newNode(int value) {
+static Node *newNode(int value) {
   Node *ptr = malloc(sizeof(Node));
 
   ptr->value = value;
